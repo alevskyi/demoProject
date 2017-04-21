@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Quotes xmlns="http://www.example.org/quote">
+<Quote id="14" lang="English" person="Byron Pulsifer" user="admin">Fate is in your hands and no one elses</Quote>
+	<Quote id="13" lang="English" person="Mahummad Ali" user="admin">
+		To be able to give away riches is mandatory if you wish to
+		possess them. This is the only way that you will be truly rich.
+	</Quote>
+	<Quote id="11" lang="English" person="Zig Ziglar" user="admin">
+		Positive thinking will let you do everything better than
+		negative thinking will.
+	</Quote>
+	<Quote id="7" lang="English" person="General Douglas MacArthur"
+		user="admin">
+		It is fatal to enter any war without the will to win it.
+	</Quote>
+	<Quote id="4" lang="English" person="Lee Womack" user="admin">
+		I think you can have moderate success by copying something else,
+		but if you really want to knock it out of the park, you have to
+		do something different and take chances.
+	</Quote>
+	<Quote id="8" lang="Russian" person="Мольер" user="admin">
+		Безоблачное счастье может наскучить, в жизни никак нельзя
+		обойтись без приливов и отливов.
+	</Quote>
+	<Quote id="15" lang="English" person="Seneca" user="admin">
+		Things that were hard to bear are sweet to remember.
+	</Quote>
+	<Quote id="9" lang="Russian" person="Будда Гаутама" user="admin">
+		Победитель вызывает ненависть, побежденный повержен в скорбь.
+		Отринувший и победу, и поражение живет в счастье и мире.
+	</Quote>
+	<Quote id="12" lang="English" person="Thomas Jefferson" user="admin">
+		Reason and free inquiry are the only effectual agents against
+		error.
+	</Quote>
+	<Quote id="3" lang="Russian" person="Блез Паскаль" user="admin">
+		Для человека заурядного все люди на одно лицо.
+	</Quote>
+	<Quote id="16" lang="English" person="Lao Tzu" user="admin">
+		The journey of a thousand miles begins with one step.
+	</Quote>
+	<Quote id="6" lang="English" person="Helen Keller" user="admin">
+		No pessimist ever discovered the secrets of the stars, or sailed
+		to an uncharted land, or opened a new heaven to the human
+		spirit.
+	</Quote>
+	<Quote id="10" lang="English" person="H. W. Arnold" user="admin">
+		The worst bankrupt in the world is the person who has lost his
+		enthusiasm.
+	</Quote>
+	<Quote id="2" lang="Russian" person="Бернард Шоу" user="admin">
+		Каждый шаг вперед в развитии мыслей и нравов, считается
+		аморальным, пока он не получил признание большинства.
+	</Quote>
+	<Quote id="1" lang="Russian" person="Томас Эдисон" user="admin">
+		Гений - один процент вдохновения и девяносто девять процентов
+		пота.
+	</Quote>
+	<Quote id="5" lang="English" person="George Sheehan" user="admin">
+		Success means having the courage, the determination, and the
+		will to become the person you believe you were meant to be.
+	</Quote>
+
+</Quotes>

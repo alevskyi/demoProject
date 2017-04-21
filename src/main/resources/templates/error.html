@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<script src="https://use.typekit.net/ozn3gco.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){console.log(e);}</script>
+
+<link rel="shourtcut icon" type="image/x-icon" th:href="@{/images/logo.ico}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/stylesheet.css}" 
+	href="file:///home/asdf/Java/webapp/src/main/webapp/stylesheet.css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Error</title>
+
+</head>
+<body>
+
+	<div class="container">
+			<div class="header">
+				<div class="httpErrorCode" th:text="'Error ' + ${status}">Error 404</div>
+			</div>
+			
+			<div class="footer">
+				<div class="httpErrorDescription" th:text="${error}">Not found</div>
+			</div>
+	</div>
+</body>
+</html>

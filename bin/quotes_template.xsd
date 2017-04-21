@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://localhost:5000/webapp" elementFormDefault="qualified" xmlns:xq="http://localhost:5000/webapp">
+
+    
+
+    <complexType name="xmlQuote">
+    	<simpleContent>
+    		<extension base="string">
+    			<attribute name="lang" type="xq:Lang" use="required"></attribute>
+    			<attribute name="person" type="xq:QuotePerson"
+    				use="required">
+    			</attribute>
+    		</extension>
+    	</simpleContent>
+    </complexType>
+
+    <simpleType name="Lang">
+    	<restriction base="string">
+    		<enumeration value="English"></enumeration>
+    		<enumeration value="Russian"></enumeration>
+    	</restriction>
+    </simpleType>
+
+
+    <simpleType name="QuoteText">
+    	<restriction base="string">
+    		<minLength value="5"></minLength>
+    	</restriction>
+    </simpleType>
+
+    <element name="xmlQuote" type="xq:xmlQuote"></element>
+
+    <element name="xmlQuotes" type="xq:xmlQuotes"></element>
+    
+    <complexType name="xmlQuotes">
+    	<sequence>
+    		<element ref="xq:xmlQuote" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <simpleType name="QuotePerson">
+    	<restriction base="string">
+    		<minLength value="5"></minLength>
+    		<whiteSpace value="collapse"></whiteSpace>
+    	</restriction>
+    </simpleType>
+
+</schema>
