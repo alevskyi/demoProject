@@ -6,7 +6,7 @@ Also there is simple REST API for form validation and quote queries.
 
 ### Persistence options:
 Application can store data in three different ways, using either: Spring JDBC templates, Hibernate or JAXB.
-Repository includes database file ```database.mv.db``` and XML files preloded with same content - quotations and two user accounts. 
+Repository includes database file ```database.mv.db``` and XML files preloaded with same content - quotations and two user accounts. 
 To choose specific option set profiles in /src/main/resources/application.properties as follows:
 * ```ormQuotes,ormUsers```  -  for Hibernate
 * ```jdbcQuotes,jdbcUsers```  -  for Spring JDBC templates
