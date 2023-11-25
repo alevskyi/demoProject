@@ -1,24 +1,24 @@
 package quoteutils;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import org.assertj.core.groups.Tuple;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import quoteutils.templateutils.XmlQuote;
 
 import java.util.HashSet;
 
-import org.assertj.core.groups.Tuple;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import quoteutils.templateutils.XmlQuote;
-
-@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
 public class XmlQuoteResourceTest {
-    
+
+	@Autowired
     private XmlQuoteResource rep;
         
-    @Before
+    @BeforeEach
     public void init(){
     	
     	HashSet<Quote> quotes = new HashSet<>();

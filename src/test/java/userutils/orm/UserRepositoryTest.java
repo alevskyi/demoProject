@@ -1,24 +1,19 @@
 package userutils.orm;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import jakarta.persistence.EntityManager;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import userutils.User;
 
 import java.util.HashSet;
 import java.util.NoSuchElementException;
 
-import jakarta.persistence.EntityManager;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import userutils.User;
-
-@RunWith(SpringRunner.class)
 @DataJpaTest
 @SpringBootTest(classes={web.AppRunner.class})
 
@@ -32,7 +27,7 @@ public class UserRepositoryTest {
     
     private UsersAdapter rep;
            
-    @Before
+    @BeforeEach
     public void init(){
     	
     	rep = new UsersAdapter(users);

@@ -1,25 +1,20 @@
 package userutils.jdbc;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import jakarta.persistence.EntityManager;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import userutils.User;
 
 import java.util.HashSet;
 import java.util.NoSuchElementException;
 
-import jakarta.persistence.EntityManager;
-import jakarta.sql.DataSource;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import userutils.User;
-
-@RunWith(SpringRunner.class)
 @DataJpaTest
 @SpringBootTest(classes={web.AppRunner.class})
 
@@ -29,11 +24,11 @@ public class UserJdbcRepositoryTest {
 	private EntityManager em;
 	
 	@Autowired
-	private DataSource data;
+	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	       
     private UsersJdbcRepository rep;
              
-    @Before
+    @BeforeEach
     public void init(){
     	    	    	
     	User u = new User();
@@ -54,7 +49,7 @@ public class UserJdbcRepositoryTest {
     	em.persist(u2);
     	em.flush();
     	
-    	rep = new UsersJdbcRepository(data);   	
+    	rep = new UsersJdbcRepository(namedParameterJdbcTemplate);
     }
     
     @Test

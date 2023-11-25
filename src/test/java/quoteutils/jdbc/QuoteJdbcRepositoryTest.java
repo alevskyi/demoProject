@@ -1,41 +1,36 @@
 package quoteutils.jdbc;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
-import java.util.HashSet;
-
 import jakarta.persistence.EntityManager;
-import jakarta.sql.DataSource;
-
 import org.assertj.core.groups.Tuple;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import quoteutils.Lang;
 import quoteutils.Quote;
 import quoteutils.templateutils.XmlQuote;
 
-@RunWith(SpringRunner.class)
+import java.util.HashSet;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 @DataJpaTest
 @SpringBootTest(classes={web.AppRunner.class})
 
 public class QuoteJdbcRepositoryTest {
 	
     @Autowired
-    private DataSource data;
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     
     @Autowired
     private EntityManager em;
     
     private QuoteJdbcRepository rep;
            
-    @Before
+    @BeforeEach
     public void init(){
     	    	
     	Quote q = new Quote();
@@ -66,7 +61,7 @@ public class QuoteJdbcRepositoryTest {
     	q4.setUser("testUserWithTestUsername");
     	em.persist(q4);
     	
-    	rep = new QuoteJdbcRepository(data);
+    	rep = new QuoteJdbcRepository(namedParameterJdbcTemplate);
     	
     }
     

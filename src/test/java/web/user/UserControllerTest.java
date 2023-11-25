@@ -1,31 +1,31 @@
 package web.user;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
-
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
 import userutils.User;
 import web.AppRunner;
 
-import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.when;
+import java.util.NoSuchElementException;
 
+import static org.mockito.Mockito.argThat;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.unauthenticated;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import java.util.NoSuchElementException;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 class UserMatcher implements ArgumentMatcher<UserRegistration> {
 	
@@ -47,8 +47,6 @@ class UserMatcher implements ArgumentMatcher<UserRegistration> {
 
 
 @ActiveProfiles("test")
-
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes=AppRunner.class)
 @AutoConfigureMockMvc
 
@@ -60,7 +58,7 @@ public class UserControllerTest {
 	@Autowired
 	private Users users;
 	
-	@Before
+	@BeforeEach
 	public void init(){
 		UserMatcher existing = new UserMatcher("existingUser");
 		UserMatcher invalid = new UserMatcher("invalidUser");
