@@ -6,8 +6,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.HashSet;
 import java.util.NoSuchElementException;
 
-import javax.persistence.EntityManager;
-import javax.sql.DataSource;
+import jakarta.persistence.EntityManager;
+import jakarta.sql.DataSource;
 
 import org.junit.Before;
 import org.junit.Test;

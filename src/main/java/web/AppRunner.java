@@ -1,9 +1,7 @@
 package web;
 
-import javax.persistence.AttributeConverter;
-import javax.sql.DataSource;
+import jakarta.persistence.AttributeConverter;
 
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import quoteutils.Lang;
 import quoteutils.XmlQuoteResource;
 import quoteutils.jdbc.QuoteJdbcRepository;
@@ -33,7 +32,7 @@ import web.user.Users;
 public class AppRunner{
 	
 	@Autowired
-	private DataSource data;
+	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
 	@Autowired
 	private UsersRepository userRepository;
@@ -62,7 +61,7 @@ public class AppRunner{
 	@Profile("jdbcQuotes")
 	@Bean
 	public QuoteResource jdbcQuoteResource(){
-		return new QuoteJdbcRepository(data);
+		return new QuoteJdbcRepository(namedParameterJdbcTemplate);
 	}
 	
 	@Profile("xmlUsers")
@@ -80,20 +79,20 @@ public class AppRunner{
 	@Profile("jdbcUsers")
 	@Bean
 	public Users jdbcUsers(){
-		return new UsersJdbcRepository(data);
+		return new UsersJdbcRepository(namedParameterJdbcTemplate);
 	}
 	
-	@Profile("test")
-	@Bean
-	public QuoteResource mockResource(){
-		return Mockito.mock(QuoteResource.class);	
-	}
+//	@Profile("test")
+//	@Bean
+//	public QuoteResource mockResource(){
+//		return Mockito.mock(QuoteResource.class);
+//	}
 	
-	@Profile("test")
-	@Bean
-	public Users mockUsers(){
-		return Mockito.mock(Users.class);
-	}
+//	@Profile("test")
+//	@Bean
+//	public Users mockUsers(){
+//		return Mockito.mock(Users.class);
+//	}
 	
 	 public static void main(String[] args){
 		SpringApplication.run(AppRunner.class, args);

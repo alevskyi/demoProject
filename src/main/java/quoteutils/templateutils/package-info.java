@@ -5,5 +5,5 @@
 // Generated on: 2017.04.01 at 10:35:00 PM EEST 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://localhost:5000/webapp", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@jakarta.xml.bind.annotation.XmlSchema(namespace = "http://localhost:5000/webapp", elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package quoteutils.templateutils;

@@ -6,8 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.sql.DataSource;
-
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -31,8 +29,8 @@ public class QuoteJdbcRepository implements QuoteResource{
 	
 	private static final String checkSql = "SELECT * FROM QUOTE WHERE text=:text";
 
-	public QuoteJdbcRepository(DataSource data){
-		this.repository = new NamedParameterJdbcTemplate(data);
+	public QuoteJdbcRepository(NamedParameterJdbcTemplate namedParameterJdbcTemplate){
+		this.repository = namedParameterJdbcTemplate;
 		mapper = new BeanPropertyRowMapper<>(Quote.class);
 		mapper.setConversionService(new LangConverter());
 	}

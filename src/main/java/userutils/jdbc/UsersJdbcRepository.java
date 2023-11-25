@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-import javax.sql.DataSource;
-
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -29,8 +27,8 @@ public class UsersJdbcRepository implements Users{
 	private static final String addUserSql = "INSERT INTO USER (username, passwd, NON_LOCKED, PASSWORD_NON_EXPIRED, authorities) VALUES (:username, :passwd, :nonLocked, :passwordNonExpired, :authorities)";
 
 
-	public UsersJdbcRepository(DataSource data){
-		this.repository = new NamedParameterJdbcTemplate(data);
+	public UsersJdbcRepository(NamedParameterJdbcTemplate namedParameterJdbcTemplate){
+		this.repository = namedParameterJdbcTemplate;
 		mapper = new BeanPropertyRowMapper<>(User.class);	
 	}
 		

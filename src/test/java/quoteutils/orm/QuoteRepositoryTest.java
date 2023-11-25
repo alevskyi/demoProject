@@ -1,28 +1,21 @@
 package quoteutils.orm;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
-import java.util.HashSet;
-
-import javax.persistence.EntityManager;
-
+import jakarta.persistence.EntityManager;
 import org.assertj.core.groups.Tuple;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import quoteutils.templateutils.XmlQuote;
 import quoteutils.Lang;
 import quoteutils.Quote;
-import quoteutils.orm.QuoteRepository;
-import quoteutils.orm.QuoteResourceAdapter;
+import quoteutils.templateutils.XmlQuote;
 
-@RunWith(SpringRunner.class)
+import java.util.HashSet;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 @DataJpaTest
 @SpringBootTest(classes={web.AppRunner.class})
 
@@ -36,7 +29,7 @@ public class QuoteRepositoryTest {
     
     private QuoteResourceAdapter rep;
         
-    @Before
+    @BeforeEach
     public void init(){
     	
     	rep = new QuoteResourceAdapter(quotes);

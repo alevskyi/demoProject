@@ -5,8 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.HashSet;
 
-import javax.persistence.EntityManager;
-import javax.sql.DataSource;
+import jakarta.persistence.EntityManager;
+import jakarta.sql.DataSource;
 
 import org.assertj.core.groups.Tuple;
 import org.junit.Before;

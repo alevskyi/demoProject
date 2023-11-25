@@ -5,5 +5,5 @@
 // Generated on: 2017.03.09 at 01:42:52 PM EET 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.example.org/user", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@jakarta.xml.bind.annotation.XmlSchema(namespace = "http://www.example.org/user", elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package userutils;

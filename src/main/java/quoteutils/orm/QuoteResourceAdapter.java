@@ -18,11 +18,11 @@ public class QuoteResourceAdapter implements QuoteResource{
 	}
 		
 	public Quote getQuote(int id){
-		Quote quote = repository.findOne(id);
+		Quote quote = repository.findById(id).get();
 		if(quote == null)
 			throw new IllegalArgumentException("No quote with id " + id + " found");
 		else
-			return repository.findOne(id);
+			return repository.findById(id).get();
 	}
 		
 		
