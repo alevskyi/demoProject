@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import userutils.User;
+import ua.training.quotes.Application;
+import ua.training.quotes.persistence.user.UserJdbcRepository;
+import ua.training.quotes.model.User;
 
 import java.util.HashSet;
 import java.util.NoSuchElementException;
@@ -16,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DataJpaTest
-@SpringBootTest(classes={web.AppRunner.class})
+@SpringBootTest(classes={Application.class})
 
 public class UserJdbcRepositoryTest {
 	
@@ -26,7 +28,7 @@ public class UserJdbcRepositoryTest {
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	       
-    private UsersJdbcRepository rep;
+    private UserJdbcRepository rep;
              
     @BeforeEach
     public void init(){
@@ -49,7 +51,7 @@ public class UserJdbcRepositoryTest {
     	em.persist(u2);
     	em.flush();
     	
-    	rep = new UsersJdbcRepository(namedParameterJdbcTemplate);
+    	rep = new UserJdbcRepository(namedParameterJdbcTemplate);
     }
     
     @Test

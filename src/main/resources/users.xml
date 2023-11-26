@@ -1,1 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Users xmlns="http://www.example.org/user"><User username="stepan" passwd="123456" nonLocked="true" passwordNonExpired="true" authorities="ROLE_USER"/><User username="admin" passwd="admin" nonLocked="true" passwordNonExpired="true" authorities="ROLE_ADMIN"/></Users>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Users xmlns="http://www.example.org/user">
+    <User username="stepan" passwd="123456" nonLocked="true" passwordNonExpired="true" authorities="ROLE_USER"/>
+    <User username="admin" passwd="admin" nonLocked="true" passwordNonExpired="true" authorities="ROLE_ADMIN"/>
+</Users>

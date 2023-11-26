@@ -6,7 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import userutils.User;
+import ua.training.quotes.Application;
+import ua.training.quotes.persistence.user.UserAdapter;
+import ua.training.quotes.persistence.user.UserRepository;
+import ua.training.quotes.model.User;
 
 import java.util.HashSet;
 import java.util.NoSuchElementException;
@@ -15,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DataJpaTest
-@SpringBootTest(classes={web.AppRunner.class})
+@SpringBootTest(classes={Application.class})
 
 public class UserRepositoryTest {
 	
@@ -23,14 +26,14 @@ public class UserRepositoryTest {
 	private EntityManager em;
 	
     @Autowired
-    private UsersRepository users;
+    private UserRepository users;
     
-    private UsersAdapter rep;
+    private UserAdapter rep;
            
     @BeforeEach
     public void init(){
     	
-    	rep = new UsersAdapter(users);
+    	rep = new UserAdapter(users);
     	
     	User u = new User();
     	u.setUsername("testUser");

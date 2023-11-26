@@ -2,6 +2,8 @@ package userutils;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ua.training.quotes.model.User;
+import ua.training.quotes.persistence.user.XmlUserResource;
 
 import java.util.HashSet;
 import java.util.NoSuchElementException;
@@ -12,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class UserDataTest {
 	
 	    
-    private UserData rep;
+    private XmlUserResource rep;
        
     @BeforeEach
     public void init(){
@@ -35,7 +37,7 @@ class UserDataTest {
     	u2.setAuthorities("ROLE_ADMIN");
     	users.add(u2);    	
     	
-    	rep = new UserData(users);
+    	rep = new XmlUserResource(users);
     }
     /*
      * 

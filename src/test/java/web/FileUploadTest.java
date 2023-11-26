@@ -10,7 +10,7 @@
 //import org.springframework.test.context.ActiveProfiles;
 //import org.springframework.test.web.servlet.MockMvc;
 //import quoteutils.templateutils.InvalidFileContentException;
-//import web.quote.QuoteResource;
+//import ua.training.quotes.persistence.quote.QuoteResource;
 //
 //import static org.assertj.core.api.Assertions.assertThat;
 //import static org.mockito.ArgumentMatchers.any;

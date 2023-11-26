@@ -7,9 +7,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import quoteutils.Lang;
-import quoteutils.Quote;
-import quoteutils.templateutils.XmlQuote;
+import ua.training.quotes.Application;
+import ua.training.quotes.model.Lang;
+import ua.training.quotes.model.Quote;
+import ua.training.quotes.model.XmlQuote;
+import ua.training.quotes.persistence.quote.QuoteRepository;
+import ua.training.quotes.persistence.quote.QuoteResourceAdapter;
 
 import java.util.HashSet;
 
@@ -17,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DataJpaTest
-@SpringBootTest(classes={web.AppRunner.class})
+@SpringBootTest(classes={Application.class})
 
 public class QuoteRepositoryTest {
 	

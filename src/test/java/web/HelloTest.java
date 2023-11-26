@@ -7,13 +7,14 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import ua.training.quotes.Application;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 
 @ActiveProfiles("test")
-@SpringBootTest(classes=AppRunner.class)
+@SpringBootTest(classes= Application.class)
 @AutoConfigureMockMvc
 
 public class HelloTest {

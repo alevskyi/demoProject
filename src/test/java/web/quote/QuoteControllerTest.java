@@ -9,10 +9,11 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.client.HttpClientErrorException;
-import quoteutils.Lang;
-import quoteutils.Quote;
-import quoteutils.templateutils.XmlQuote;
-import web.AppRunner;
+import ua.training.quotes.Application;
+import ua.training.quotes.model.Lang;
+import ua.training.quotes.model.Quote;
+import ua.training.quotes.model.XmlQuote;
+import ua.training.quotes.persistence.quote.QuoteResource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.doThrow;
@@ -29,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ActiveProfiles("test")
 
-@SpringBootTest(classes=AppRunner.class)
+@SpringBootTest(classes= Application.class)
 @AutoConfigureMockMvc
 
 public class QuoteControllerTest {
@@ -44,8 +45,8 @@ public class QuoteControllerTest {
 	public void init(){
 		
 	Quote q = new Quote("Quote text","quote person", Lang.RUSSIAN, "testUser"); 
-	when(quotes.getQuote(50)).thenThrow(new IllegalArgumentException());
-	when(quotes.getQuote(5)).thenReturn(q);
+	when(quotes.getQuoteById(50)).thenThrow(new IllegalArgumentException());
+	when(quotes.getQuoteById(5)).thenReturn(q);
 	doThrow(new IllegalArgumentException("Quote already exists")).when(quotes).addQuote("Same quote test text",
 			"TestPerson", Lang.ENGLISH, "sameTestUser");
 	}
@@ -72,7 +73,7 @@ public class QuoteControllerTest {
 		mvc.perform(get("/quotes/id/5"))
 		.andExpect(view().name("specific"));
 		
-		verify(quotes, times(1)).getQuote(5);
+		verify(quotes, times(1)).getQuoteById(5);
 	}
 	
 	@Test

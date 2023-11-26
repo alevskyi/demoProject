@@ -5,7 +5,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import quoteutils.templateutils.XmlQuote;
+import ua.training.quotes.model.Lang;
+import ua.training.quotes.model.Quote;
+import ua.training.quotes.model.XmlQuote;
+import ua.training.quotes.persistence.quote.XmlQuoteResource;
 
 import java.util.HashSet;
 
@@ -66,10 +69,10 @@ public class XmlQuoteResourceTest {
         
     @Test
     public void testGetQuote() {
-    	Quote q = rep.getQuote(1);
+    	Quote q = rep.getQuoteById(1);
         assertThat(q).hasFieldOrPropertyWithValue("text", "This is quote text");
         
-        assertThatThrownBy(() -> rep.getQuote(50))
+        assertThatThrownBy(() -> rep.getQuoteById(50))
     	.isInstanceOf(IllegalArgumentException.class)
     	.hasNoCause();
     }

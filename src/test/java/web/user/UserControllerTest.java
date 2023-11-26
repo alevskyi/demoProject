@@ -9,8 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
-import userutils.User;
-import web.AppRunner;
+import ua.training.quotes.Application;
+import ua.training.quotes.model.User;
+import ua.training.quotes.security.UserRegistration;
+import ua.training.quotes.persistence.user.UserResource;
 
 import java.util.NoSuchElementException;
 
@@ -47,7 +49,7 @@ class UserMatcher implements ArgumentMatcher<UserRegistration> {
 
 
 @ActiveProfiles("test")
-@SpringBootTest(classes=AppRunner.class)
+@SpringBootTest(classes= Application.class)
 @AutoConfigureMockMvc
 
 public class UserControllerTest {
@@ -56,7 +58,7 @@ public class UserControllerTest {
 	private MockMvc mvc;
 	
 	@Autowired
-	private Users users;
+	private UserResource users;
 	
 	@BeforeEach
 	public void init(){
