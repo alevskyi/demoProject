@@ -5,7 +5,7 @@ body
 	margin: 0;
 	padding: 0;
 	background-color: #eee;
-	background:url(/images/background_final.jpg);
+	background:url(/frontend/src/images/background.jpg);
 }
 
 a:link {
@@ -49,8 +49,7 @@ li {
 	padding: 0 0;
 	margin: 0 0;
     z-index: 1;
-    background: url(/images/header_final.png);
-
+    background: url(/frontend/src/images/header.png);
 }
 
 .header.font {
@@ -67,7 +66,7 @@ li {
     width: 1030px;
     height: 878px;
    
-    background: url(/images/body_final.png);
+    background: url(/frontend/src/images/body.png);
  	background-size: cover;
     
 }
@@ -77,7 +76,7 @@ li {
 	padding: 0 0;
 	margin: 0 0;
     z-index: 1;
-    background: url(/images/footer_final.png);
+    background: url(/frontend/src/images/footer.png);
     
 }
 
@@ -88,8 +87,6 @@ li {
 	font-size: 30px;
 	line-height: 30px;
 }
-
-
 
 
 .bodyDiv {

@@ -22,7 +22,7 @@ public class XmlUserResource implements UserResource {
     @PostConstruct
     public void init() {
         try {
-            this.users = objectMapper.readValue(this.getClass().getResourceAsStream("user.json"), new TypeReference<HashSet<User>>() {
+            this.users = objectMapper.readValue(this.getClass().getClassLoader().getResourceAsStream("user.json"), new TypeReference<HashSet<User>>() {
             });
         } catch (IOException e) {
             throw new RuntimeException(e);

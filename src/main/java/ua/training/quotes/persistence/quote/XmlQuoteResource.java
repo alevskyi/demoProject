@@ -27,7 +27,7 @@ public class XmlQuoteResource implements QuoteResource {
     @PostConstruct
     public void init() {
         try {
-            this.quotes = objectMapper.readValue(this.getClass().getResourceAsStream("quote.json"), new TypeReference<HashSet<Quote>>() {
+            this.quotes = objectMapper.readValue(this.getClass().getClassLoader().getResourceAsStream("quote.json"), new TypeReference<HashSet<Quote>>() {
             });
         } catch (IOException e) {
             throw new RuntimeException(e);

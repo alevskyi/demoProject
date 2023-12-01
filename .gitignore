@@ -2,3 +2,6 @@
 *.iml
 target/
 database*
+
+frontend/node_modules/
+frontend/build/
