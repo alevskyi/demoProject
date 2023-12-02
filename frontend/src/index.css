@@ -49,13 +49,13 @@ li {
     background: url(./images/header.png);
 }
 
-.header.font {
-    font-family: "cabazon",serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 30px;
-}
+/*.header.font {*/
+/*    font-family: "cabazon",serif;*/
+/*    font-style: normal;*/
+/*    font-weight: 400;*/
+/*    font-size: 30px;*/
+/*    line-height: 30px;*/
+/*}*/
 
 .content {
     padding: 0 0;
@@ -75,13 +75,13 @@ li {
     background: url(./images/footer.png);
 }
 
-.footer.font {
-    font-family: "cabazon",serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 30px;
-}
+/*.footer.font {*/
+/*    font-family: "cabazon",serif;*/
+/*    font-style: normal;*/
+/*    font-weight: 400;*/
+/*    font-size: 30px;*/
+/*    line-height: 30px;*/
+/*}*/
 
 .bodyDiv {
     display: table;

@@ -1,16 +1,12 @@
 import {Quote} from "../components/Quote";
+import {PageSkeleton} from "../components/PageSkeleton";
 
 export const Specific = () => {
-  return(
-      <div className="container">
-          <div className="header"/>
-          <div className="content">
-              <div className="bodyDiv">
-                  <Quote/>
-              </div>
-          </div>
-
-          <div className="footer"/>
-      </div>
-  );
+    return (
+        <PageSkeleton>
+            <div className="bodyDiv">
+                <Quote/>
+            </div>
+        </PageSkeleton>
+    );
 }

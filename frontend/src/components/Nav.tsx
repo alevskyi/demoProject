@@ -1,22 +1,26 @@
-export function Nav() {
+interface NavProps {
+    authenticated?: boolean
+}
+
+export function Nav(props: NavProps = {authenticated:true}) {
+    // TODO dynamic values based on url
     return <>
         <div className="linkDiv left">
-            <a href="/">Main</a>
+            {props.authenticated
+                ?  <a href="profile">Profile</a>
+                : <a href="register">Register</a>
+            }
         </div>
 
         <div className="linkDiv right">
-            {/*sec:authorize="isAuthenticated()"*/}
-            <a href="logout">Logout</a>
-
-            <a href="login">Login</a>
-
-            {/*sec:authorize="isAnonymous()"*/}
-            <a href="register">Register</a>
+            {props.authenticated
+                ? <a href="logout">Logout</a>
+                :  <a href="login">Login</a>
+            }
         </div>
 
-        {/*sec:authorize="isAuthenticated()"*/}
         <div className="linkDiv middle">
-            <a href="profile">Profile</a>
+            <a href="/">Main</a>
         </div>
     </>;
 }

@@ -1,18 +1,12 @@
-import {Nav} from "../components/Nav";
 import {RegisterForm} from "../components/RegisterForm";
+import {PageSkeleton} from "../components/PageSkeleton";
 
 export const Register = () => {
     return (
-        <div className="container">
-            <div className="header font">
-                <Nav/>
+        <PageSkeleton>
+            <div className="bodyDiv font">
+                <RegisterForm/>
             </div>
-            <div className="content">
-                <div className="bodyDiv font">
-                    <RegisterForm/>
-                </div>
-            </div>
-            <div className="footer font"/>
-        </div>
+        </PageSkeleton>
     );
 }

@@ -1,14 +1,9 @@
-import {Nav} from "../components/Nav";
+import {PageSkeleton} from "../components/PageSkeleton";
 
 export const Main = () => {
     return (
-    <div className="container">
-        <div className="header"/>
-
-        <div className="content">
+        <PageSkeleton>
             <div className="bodyDiv font">
-                <Nav/>
-
                 <div className="homeEntry">
                     <a href="quotes/random">Random quotes</a>
                 </div>
@@ -25,7 +20,6 @@ export const Main = () => {
                     <a href="about">About</a>
                 </div>
             </div>
-        </div>
-        <div className="footer"/>
-    </div>);
+        </PageSkeleton>
+    );
 }

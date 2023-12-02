@@ -4,7 +4,7 @@ import {QuoteForm} from "../components/QuoteForm";
 
 export const Profile = () => {
     return (<div className="container">
-            <div className="header font">
+            <div className="header">
                 <Nav/>
             </div>
 
@@ -23,7 +23,7 @@ export const Profile = () => {
                 </div>
             </div>
 
-            <div className="footer font"/>
+            <div className="footer"/>
         </div>
     );
 }
