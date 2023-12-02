@@ -17,7 +17,7 @@ public class Quote {
     @GeneratedValue
     private Integer id;
 
-    @Pattern(regexp="[а-яА-Яa-zA-Z0-9 :;,\\.\\-\"'\\!\\?\\s]{10,}", message="Quote must be 10 and more characters long. Only letters(Latin and Cyrillic), digits, period, colon, semicolon, comma, "
+    @Pattern(regexp="[а-яА-Яa-zA-Z0-9 :;,\\.\\-\"'\\!\\?\\s]{10,}", message="QuoteList must be 10 and more characters long. Only letters(Latin and Cyrillic), digits, period, colon, semicolon, comma, "
 			+ "double quote, question mark, exclamation mark and dash allowed in quote text.")
     private String text = "";
 

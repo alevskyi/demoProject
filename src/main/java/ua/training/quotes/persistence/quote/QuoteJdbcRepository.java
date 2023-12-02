@@ -11,7 +11,7 @@
 //import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 //
 //import ua.training.quotes.model.Lang;
-//import ua.training.quotes.model.Quote;
+//import ua.training.quotes.model.QuoteList;
 //import quoteutils.jdbc.LangConverter;
 //import ua.training.quotes.model.XmlQuote;
 //import ua.training.quotes.persistence.LangConverter;
@@ -20,26 +20,26 @@
 //
 //	private NamedParameterJdbcTemplate repository;
 //
-//	private BeanPropertyRowMapper<Quote> mapper;
+//	private BeanPropertyRowMapper<QuoteList> mapper;
 //
 //	private static final String randomQuotesSql = "SELECT * FROM QUOTE ORDER BY RAND() LIMIT :amount";
 //	private static final String quoteSql = "SELECT * FROM QUOTE WHERE id=:id";
-//	private static final String quotesInLangSql = "SELECT * FROM Quote WHERE lang=:lang ORDER BY RAND() LIMIT :amount";
-//	private static final String quotesByUsernameSql = "SELECT * FROM Quote WHERE user=:username";
+//	private static final String quotesInLangSql = "SELECT * FROM QuoteList WHERE lang=:lang ORDER BY RAND() LIMIT :amount";
+//	private static final String quotesByUsernameSql = "SELECT * FROM QuoteList WHERE user=:username";
 //	private static final String addQuoteSql = "INSERT INTO QUOTE (lang, person, text, user) VALUES (:lang, :person, :text, :user)";
 //
 //	private static final String checkSql = "SELECT * FROM QUOTE WHERE text=:text";
 //
 //	public QuoteJdbcRepository(NamedParameterJdbcTemplate namedParameterJdbcTemplate){
 //		this.repository = namedParameterJdbcTemplate;
-//		mapper = new BeanPropertyRowMapper<>(Quote.class);
+//		mapper = new BeanPropertyRowMapper<>(QuoteList.class);
 //		mapper.setConversionService(new LangConverter());
 //	}
 //
-//	private HashSet<Quote> listToMap(List<Quote> quoteList){
+//	private HashSet<QuoteList> listToMap(List<QuoteList> quoteList){
 //
-//		HashSet<Quote> result = new HashSet<>();
-//		Iterator<Quote> i = quoteList.iterator();
+//		HashSet<QuoteList> result = new HashSet<>();
+//		Iterator<QuoteList> i = quoteList.iterator();
 //		while(i.hasNext()){
 //			result.add(i.next());
 //		}
@@ -47,16 +47,16 @@
 //	}
 //
 //	@Override
-//	public HashSet<Quote> getRandomQuotes(int amount) {
+//	public HashSet<QuoteList> getRandomQuotes(int amount) {
 //
 //		Map<String, Object> params = new HashMap<>();
 //		params.put("amount", amount);
-//		List<Quote> quoteList = repository.query(randomQuotesSql, params, mapper);
+//		List<QuoteList> quoteList = repository.query(randomQuotesSql, params, mapper);
 //		return listToMap(quoteList);
 //	}
 //
 //	@Override
-//	public Quote getQuote(int id) {
+//	public QuoteList getQuote(int id) {
 //
 //		Map<String, Object> params = new HashMap<>();
 //		params.put("id", id);
@@ -69,20 +69,20 @@
 //	}
 //
 //	@Override
-//	public HashSet<Quote> getQuotesInLang(Lang lang, int amount) {
+//	public HashSet<QuoteList> getQuotesInLang(Lang lang, int amount) {
 //
 //		Map<String, Object> params = new HashMap<>();
 //		params.put("lang", lang.value());
 //		params.put("amount", amount);
-//		List<Quote> quoteList = repository.query(quotesInLangSql, params, mapper);
+//		List<QuoteList> quoteList = repository.query(quotesInLangSql, params, mapper);
 //		return listToMap(quoteList);
 //	}
 //
 //	@Override
-//	public HashSet<Quote> getUserQuotes(String username) {
+//	public HashSet<QuoteList> getUserQuotes(String username) {
 //		Map<String, Object> params = new HashMap<>();
 //		params.put("username", username);
-//		List<Quote> quoteList = repository.query(quotesByUsernameSql, params, mapper);
+//		List<QuoteList> quoteList = repository.query(quotesByUsernameSql, params, mapper);
 //		return listToMap(quoteList);
 //	}
 //
@@ -92,7 +92,7 @@
 //		params.put("text", text);
 //		try{
 //			repository.queryForObject(checkSql, params, mapper);
-//			throw new IllegalArgumentException("Quote already exists");
+//			throw new IllegalArgumentException("QuoteList already exists");
 //		}
 //		catch(EmptyResultDataAccessException e){
 //

@@ -1,11 +1,11 @@
-import {Quote} from "../components/Quote";
+import {QuoteList} from "../components/QuoteList";
 import {PageSkeleton} from "../components/PageSkeleton";
 
 export const Specific = () => {
     return (
         <PageSkeleton>
             <div className="bodyDiv">
-                <Quote/>
+                <QuoteList/>
             </div>
         </PageSkeleton>
     );

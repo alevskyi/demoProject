@@ -44,10 +44,10 @@ public class QuoteControllerTest {
 	@BeforeEach
 	public void init(){
 		
-	Quote q = new Quote("Quote text","quote person", Lang.RUSSIAN, "testUser"); 
+	Quote q = new Quote("QuoteList text","quote person", Lang.RUSSIAN, "testUser");
 	when(quotes.getQuoteById(50)).thenThrow(new IllegalArgumentException());
 	when(quotes.getQuoteById(5)).thenReturn(q);
-	doThrow(new IllegalArgumentException("Quote already exists")).when(quotes).addQuote("Same quote test text",
+	doThrow(new IllegalArgumentException("QuoteList already exists")).when(quotes).addQuote("Same quote test text",
 			"TestPerson", Lang.ENGLISH, "sameTestUser");
 	}
 		

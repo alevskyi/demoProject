@@ -4,7 +4,7 @@
 //import java.util.Iterator;
 //
 //import ua.training.quotes.model.Lang;
-//import ua.training.quotes.model.Quote;
+//import ua.training.quotes.model.QuoteList;
 //import ua.training.quotes.model.XmlQuote;
 //
 //
@@ -16,8 +16,8 @@
 //		this.repository = repository;
 //	}
 //
-//	public Quote getQuote(int id){
-//		Quote quote = repository.findById(id).get();
+//	public QuoteList getQuote(int id){
+//		QuoteList quote = repository.findById(id).get();
 //		if(quote == null)
 //			throw new IllegalArgumentException("No quote with id " + id + " found");
 //		else
@@ -25,25 +25,25 @@
 //	}
 //
 //
-//	public HashSet<Quote> getRandomQuotes(int amount){
+//	public HashSet<QuoteList> getRandomQuotes(int amount){
 //		return repository.getRandomQuotes(amount);
 //	}
 //
 //
-//	public HashSet<Quote> getQuotesInLang(Lang lang, int amount){
+//	public HashSet<QuoteList> getQuotesInLang(Lang lang, int amount){
 //		return repository.getQuotesInLang(lang.value(), amount);
 //	}
 //
 //
-//	public HashSet<Quote> getUserQuotes(String username){
+//	public HashSet<QuoteList> getUserQuotes(String username){
 //		return repository.findByUser(username);
 //	}
 //
 //
 //	public void addQuote(String text, String person, Lang lang, String username){
-//		Quote q = new Quote(text, person, lang, username);
+//		QuoteList q = new QuoteList(text, person, lang, username);
 //		if(repository.findByText(text) != null)
-//			throw new IllegalArgumentException("Quote already exists");
+//			throw new IllegalArgumentException("QuoteList already exists");
 //		repository.save(q);
 //	}
 //
@@ -52,7 +52,7 @@
 //
 //		XmlQuote q;
 //		while(i.hasNext()){
-//			Quote quote = new Quote();
+//			QuoteList quote = new QuoteList();
 //			quote.setUser(username);
 //
 //			q = i.next();

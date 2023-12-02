@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/quote" elementFormDefault="qualified" xmlns:q="http://www.example.org/quote">
 
-    
-
     <complexType name="Quote">
     	<simpleContent>
     		<extension base="string">
@@ -18,8 +16,8 @@
 
     <simpleType name="Lang">
     	<restriction base="string">
-    		<enumeration value="English"></enumeration>
-    		<enumeration value="Russian"></enumeration>
+    		<enumeration value="en"></enumeration>
+    		<enumeration value="ru"></enumeration>
     	</restriction>
     </simpleType>
 

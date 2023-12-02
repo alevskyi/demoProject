@@ -1,4 +1,4 @@
-import {Quote} from "../components/Quote";
+import {QuoteList} from "../components/QuoteList";
 import {Nav} from "../components/Nav";
 import {QuoteForm} from "../components/QuoteForm";
 
@@ -15,7 +15,7 @@ export const Profile = () => {
 
 
                     <div className="quotesList">
-                        <Quote/>
+                        <QuoteList/>
                         <h4>Nothing here</h4>
                     </div>
 

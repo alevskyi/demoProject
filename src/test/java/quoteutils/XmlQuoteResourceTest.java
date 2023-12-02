@@ -101,12 +101,12 @@ public class XmlQuoteResourceTest {
 	
 	@Test
 	public void addQuote(){
-		rep.addQuote("Most fresh quote", "Quote Autor", Lang.ENGLISH, "uniqueUser");
+		rep.addQuote("Most fresh quote", "QuoteList Autor", Lang.ENGLISH, "uniqueUser");
 		
 		HashSet<Quote> q = rep.getUserQuotes("uniqueUser");
 		assertThat(q).hasSize(1);
 		assertThat(q).extracting("text", "person", "lang", "user")
-		.containsExactly(new Tuple("Most fresh quote", "Quote Autor", Lang.ENGLISH, "uniqueUser"));	
+		.containsExactly(new Tuple("Most fresh quote", "QuoteList Autor", Lang.ENGLISH, "uniqueUser"));
 	}
 	
 	@Test

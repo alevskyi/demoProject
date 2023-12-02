@@ -11,6 +11,7 @@ import {Main} from "./pages/Main";
 import {Login} from "./pages/Login";
 import {Register} from "./pages/Register";
 import {Profile} from "./pages/Profile";
+import {Random} from "./pages/Random";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Main/>,
+    },
+    {
+        path: "quotes/random",
+        element: <Random/>,
     },
     {
         path: "login",

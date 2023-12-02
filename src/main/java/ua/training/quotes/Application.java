@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 //@Configuration
-//@EntityScan(basePackageClasses={Quote.class, User.class})
+//@EntityScan(basePackageClasses={QuoteList.class, User.class})
 //@EnableJpaRepositories(basePackageClasses={UsersRepository.class, QuoteRepository.class})
 public class Application {
 	

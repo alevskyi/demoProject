@@ -1,7 +1,7 @@
 import {Nav} from "./Nav";
 import {ReactElement} from "react";
 
-export const PageSkeleton = (props: { children: ReactElement | ReactElement[] }) => {
+export const PageSkeleton = (props: { children: ReactElement}) => {
     return (
         <div className="container">
             <div className="header">

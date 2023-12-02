@@ -53,3 +53,9 @@
     font-size: 0.9em;
     text-align: right;
 }
+
+
+.quotesList{
+    max-height: 500px;
+    overflow: auto;
+}

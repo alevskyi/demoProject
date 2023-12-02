@@ -9,7 +9,7 @@ export const Main = () => {
                 </div>
 
                 <div className="homeEntry">
-                    <a href=".#quotes/en">Random quotes in english</a>
+                    <a href="quotes/en">Random quotes in english</a>
                 </div>
 
                 <div className="homeEntry">
