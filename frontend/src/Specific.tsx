@@ -5,13 +5,15 @@ export const Specific = () => {
           <div className="content">
               <div className="bodyDiv">
                   <div className="quoteContainer">
-                      <div className="quoteDiv" th:text="${quote.text}"
-                           th:classappend="${quote.getLang().value()=='Russian' ? 'quoteRus':'quoteEng'}">
+                      {/*th:text="${quote.text}"
+                           th:classappend="${quote.getLang().value()=='Russian' ? 'quoteRus':'quoteEng'}"*/}
+                      <div className="quoteDiv">
                           This is quote textThis is quote textThis is quote text gfdg gfdgdfgsssssssss
                       </div>
 
-                      <div className="autorDiv" th:classappend="${quote.getLang().value()=='Russian' ? 'rus':'eng'}"
-                           th:text="'&mdash; ' + ${quote.person}">-this is Autor
+                      {/*th:classappend="${quote.getLang().value()=='Russian' ? 'rus':'eng'}"
+                           th:text="'&mdash; ' + ${quote.person}"*/}
+                      <div className="autorDiv">-this is Autor
                       </div>
                   </div>
               </div>

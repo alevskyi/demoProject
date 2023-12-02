@@ -2,7 +2,6 @@ export const Random = () => {
   return(
       <div className="container">
           <div className="header font">
-
               <div className="linkDiv left">
                   <a href="/">Main</a>
               </div>
@@ -17,25 +16,18 @@ export const Random = () => {
 
               {/*sec:authorize="isAuthenticated()"*/}
               <div className="linkDiv middle">
-                  <a th:href="@{'/users/' + ${#authentication.principal.getUsername()}}">Profile</a>
+                  <a href="profile">Profile</a>
               </div>
-
           </div>
 
           <div className="content">
               <div className="bodyDiv font">
-
-                  <a style="display:block" href="#" th:href="@{'id/' + ${quote.id}}"
-                     th:each="quote : ${randomQuotes}" className="quoteContainer">
-
-                      <div className="quoteDiv" th:text="${quote.text}"
-                           th:classappend="${quote.getLang().value()=='Russian' ? 'quoteRus':'quoteEng'}">
+                  {/*style="display:block" th:href="@{'id/' + ${quote.id}}" th:each="quote : ${randomQuotes}"*/}
+                  <a href="#"  className="quoteContainer">
+                      <div className="quoteDiv">
                           This is quote textThis is quote textThis is quote text gfdg gfdgdfgsssssssss
                       </div>
-
-                      <div className="autorDiv" th:classappend="${quote.getLang().value()=='Russian' ? 'rus':'eng'}"
-                           th:text="'&mdash; ' + ${quote.person}">-this is Autor
-                      </div>
+                      <div className="autorDiv">-this is Autor</div>
                   </a>
               </div>
           </div>

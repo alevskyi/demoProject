@@ -10,7 +10,7 @@ export const Login = () => {
             <div className="content">
                 <div className="bodyDiv font">
                     <div className="titleBlock">
-                        <div className="emphesizedText">Login</div>
+                        <div className="emphasizedText">Login</div>
                     </div>
 
                     <div>
@@ -21,7 +21,7 @@ export const Login = () => {
 
                                 <tr>
                                     <td><span>Username:</span></td>
-                                    <td colSpan={2}><input type="text" name="username" align="right"/></td>
+                                    <td colSpan={2}><input type="text" name="username"/></td>
                                 </tr>
 
                                 <tr>
@@ -38,11 +38,14 @@ export const Login = () => {
 
                                 <tr>
                                     <td colSpan={2}>
-                                        <span style="display: inline-block;">Stay logged in</span>
-                                        <input style="display: inline-block;" type="checkbox" name="remember"/>
-                                        <span style="display: inline-block; width: 155px;"></span>
-                                        <input type="submit" value="Login"
-                                               style="font-family: cabazon; font-size: 1em;"/>
+                                        {/*style="display: inline-block;"*/}
+                                        <span>Stay logged in</span>
+                                        {/*style="display: inline-block;" */}
+                                        <input type="checkbox" name="remember"/>
+                                        {/*style="display: inline-block; width: 155px;"*/}
+                                        <span></span>
+                                        {/*style="font-family: cabazon; font-size: 1em;"*/}
+                                        <input type="submit" value="Login"/>
                                     </td>
                                 </tr>
                             </table>

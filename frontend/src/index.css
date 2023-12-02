@@ -137,6 +137,7 @@ li {
     text-align: right;
 }
 
+/*Split into lang and quote classes */
 .autorDiv.rus{
     font-family: "lobster", serif;
 }
@@ -145,7 +146,6 @@ li {
     font-family: "cabazon",serif;
     font-size: 25px;
 }
-
 
 .quoteDiv.quoteRus {
     font-family: "lobster", serif;
@@ -162,7 +162,7 @@ li {
     font-size: 25px;
     line-height: 30px;
 }
-
+/*End split*/
 
 .homeEntry {
     display: table-row;
@@ -175,7 +175,7 @@ li {
     font-size: 30px;
 }
 
-.emphesizedText {
+.emphasizedText {
     font-size: 40px;
     font-weight: 550;
     padding-bottom: 30px;
