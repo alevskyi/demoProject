@@ -1,3 +1,4 @@
+import {Nav} from "../components/Nav";
 
 export const Main = () => {
     return (
@@ -6,29 +7,14 @@ export const Main = () => {
 
         <div className="content">
             <div className="bodyDiv font">
-                <div className="homeEntry">
-                    {/*not isAuthenticated()*/}
-                    <a href="login">Login</a>
-
-                    {/*isAuthenticated()*/}
-                    <a href="user/id">Profile</a>
-                </div>
-                {/*isAuthenticated()*/}
-                <div className="homeEntry">
-                    <a href="logout">Logout</a>
-                </div>
-
-                {/*not isAuthenticated()*/}
-                <div className="homeEntry">
-                    <a href="register">Register</a>
-                </div>
+                <Nav/>
 
                 <div className="homeEntry">
                     <a href="quotes/random">Random quotes</a>
                 </div>
 
                 <div className="homeEntry">
-                    <a href="#quotes/en">Random quotes in english</a>
+                    <a href=".#quotes/en">Random quotes in english</a>
                 </div>
 
                 <div className="homeEntry">

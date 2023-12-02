@@ -1,20 +1,22 @@
+import {Nav} from "../components/Nav";
 
 export const About = () => {
     return(
         <div className="container">
             <div className="header font">
-                <div className="linkDiv left">
-                    <a href="components#" >Main</a>
-                </div>
-                <div className="linkDiv right">
-                    <a href="components#">Logout</a>
+                {/*<div className="linkDiv left">*/}
+                {/*    <a href="components#" >Main</a>*/}
+                {/*</div>*/}
+                {/*<div className="linkDiv right">*/}
+                {/*    <a href="components#">Logout</a>*/}
 
-                    <a href="components#">Register</a>
-                </div>
+                {/*    <a href="components#">Register</a>*/}
+                {/*</div>*/}
 
-                <div className="linkDiv middle">
-                    <a href="components#">Profile</a>
-                </div>
+                {/*<div className="linkDiv middle">*/}
+                {/*    <a href="components#">Profile</a>*/}
+                {/*</div>*/}
+                <Nav/>
             </div>
 
             <div className="content">

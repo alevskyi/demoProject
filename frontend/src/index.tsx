@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {About} from "./About";
+import {About} from "./pages/About";
 import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
-import {Main} from "./Main";
+import {Main} from "./pages/Main";
+import {Login} from "./pages/Login";
+import {Register} from "./pages/Register";
+import {Profile} from "./pages/Profile";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -19,8 +22,16 @@ const router = createBrowserRouter([
         element: <Main/>,
     },
     {
-        path: "quotes",
-        element: <About/>,
+        path: "login",
+        element: <Login/>,
+    },
+    {
+        path: "register",
+        element: <Register/>,
+    },
+    {
+        path: "profile",
+        element: <Profile/>,
     },
     {
         path: "about",

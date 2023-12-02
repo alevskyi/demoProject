@@ -1,0 +1,55 @@
+/*Split into lang and quote classes */
+.autorDiv.rus{
+    font-family: "lobster", serif;
+}
+
+.autorDiv.eng{
+    font-family: "cabazon",serif;
+    font-size: 25px;
+}
+
+.quoteDiv.quoteRus {
+    font-family: "lobster", serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.quoteDiv.quoteEng {
+    font-family: "cabazon",serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 30px;
+}
+/*End split*/
+
+.quoteContainer{
+    float: top;
+    margin: 0 auto;
+    height: auto;
+    width: auto;
+    overflow: auto;
+    text-align: center;
+}
+
+.quoteDiv {
+    padding-top: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 1.5em;
+    margin: 0 auto auto 0;
+    overflow-x:hidden;
+    overflow-y:hidden;
+}
+
+.autorDiv {
+    float: right;
+    padding-right: 40px;
+    padding-top: 00px;
+    padding-left: 00px;
+    padding-bottom: 30px;
+    font-size: 0.9em;
+    text-align: right;
+}
