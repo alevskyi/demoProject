@@ -20,4 +20,15 @@ public enum Lang {
     RU("ru");
 
     private final String code;
+
+    public static Lang fromCode(String code) {
+        switch (code) {
+            case "en":
+                return EN;
+            case "ru":
+                return RU;
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
 }

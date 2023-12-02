@@ -5,15 +5,15 @@ export const Main = () => {
         <PageSkeleton>
             <div className="bodyDiv font">
                 <div className="homeEntry">
-                    <a href="quotes/random">Random quotes</a>
+                    <a href="quote/random">Random quotes</a>
                 </div>
 
                 <div className="homeEntry">
-                    <a href="quotes/en">Random quotes in english</a>
+                    <a href="quote/lang/en">Random quotes in english</a>
                 </div>
 
                 <div className="homeEntry">
-                    <a href="quotes/ru">Random quotes in russian</a>
+                    <a href="quote/lang/ru">Random quotes in russian</a>
                 </div>
 
                 <div className="homeEntry">

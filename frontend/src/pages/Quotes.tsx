@@ -1,13 +1,15 @@
 import {Quote, QuoteList} from "../components/QuoteList";
-import {QuoteForm} from "../components/QuoteForm";
 import {PageSkeleton} from "../components/PageSkeleton";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {useLocation} from "react-router-dom";
+import {Path} from "@remix-run/router/history";
 
-export const Profile = () => {
-    const currentUser = 'testUser';
+export const Quotes = () => {
+    const location: Path = useLocation();
+
     useEffect(() => {
-        axios.get<Quote[]>(`${process.env.REACT_APP_BACKEND_URL}/quote/user/${currentUser}`)
+        axios.get<Quote[]>(`${process.env.REACT_APP_BACKEND_URL}${location.pathname}`)
             .then(resp => setQuotes(resp.data))
             .catch(err => console.log(err));
     }, []);
@@ -15,13 +17,7 @@ export const Profile = () => {
     return (
         <PageSkeleton>
             <div className="bodyDiv font">
-                {/*style="display: table-row;"*/}
-                <span>Your postings:</span>
-                <div className="quotesList">
-                    <QuoteList data={quotes}/>
-                    <h4>Nothing here</h4>
-                </div>
-                <QuoteForm/>
+                <QuoteList data={quotes}/>
             </div>
         </PageSkeleton>
     );

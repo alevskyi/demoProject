@@ -14,6 +14,7 @@ import ua.training.quotes.model.Lang;
 import ua.training.quotes.model.Quote;
 import ua.training.quotes.persistence.quote.QuoteResource;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,25 +35,30 @@ public class QuoteController {
     }
 
     @GetMapping("{id}")
-    public Quote byId(@PathVariable Integer id) {
-       return quoteResource.getQuoteById(id);
+    public Set<Quote> byId(@PathVariable Integer id) {
+       return Collections.singleton(quoteResource.getQuoteById(id));
     }
 
-    @GetMapping("{lang}")
+    @GetMapping("user/{username}")
+    public Set<Quote> byUsername(@PathVariable String username) {
+       return quoteResource.getUserQuotes(username);
+    }
+
+    @GetMapping("lang/{lang}")
     public Set<Quote> byLanguage(@PathVariable Lang lang) {
         return quoteResource.getQuotesInLang(lang);
     }
 
     @PostMapping
     public void newQuote(@Valid Quote quote) {
-        String username = "1231231";
+        String username = "testUser";
         quoteResource.addQuote(quote.getText(), quote.getPerson(),
                 quote.getLang(), username);
     }
 
     @PostMapping("upload")
     public void upload(@RequestPart MultipartFile file) {
-        String username = "1231231";
+        String username = "testUser";
         Set<Quote> quotes = new HashSet<>();
         quoteResource.addQuotes(quotes, username);
     }
