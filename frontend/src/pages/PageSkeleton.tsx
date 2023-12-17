@@ -8,6 +8,7 @@ import {Register} from "./Register";
 import {Profile} from "./Profile";
 import {About} from "./About";
 import {get} from "../client";
+import {AuthWrapper} from "../components/AuthWrapper";
 
 export const PageSkeleton = () => {
     const [authenticated, setAuthenticated] = useState(false);
@@ -34,7 +35,11 @@ export const PageSkeleton = () => {
                         <Route path="quote/*" element={<Quotes/>}/>
                         <Route path="login" element={<Login loginHandler={() => setAuthenticated(true)}/>}/>
                         <Route path="register" element={<Register/>}/>
-                        <Route path="profile" element={<Profile/>}/>
+                        <Route path="profile" element={
+                            <AuthWrapper isAuthenticated={authenticated}>
+                                <Profile/>
+                            </AuthWrapper>
+                        }/>
                         <Route path="about" element={<About/>}/>
                     </Routes>
                 </div>
