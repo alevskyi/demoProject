@@ -2,6 +2,7 @@ package ua.training.quotes.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -45,8 +46,8 @@ public class AuthController {
     }
 
     @PostMapping("register")
-    public void register(@RequestBody RegisterRequest registerRequest) {
-//        TODO validation
+    public void register(@Valid @RequestBody RegisterRequest registerRequest) {
+
         userDetailsManager.createUser(new User(registerRequest.getUsername(), registerRequest.getPassword(), Collections.emptyList()));
     }
 }

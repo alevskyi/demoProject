@@ -15,10 +15,8 @@ export const PageSkeleton = () => {
 
     useEffect(() => {
         get<void>('auth', (res) => {
-            console.log('fulfilled');
             setAuthenticated(true);
         }, (res) => {
-            console.log('rejected')
             setAuthenticated(false);
         });
     }, []);
