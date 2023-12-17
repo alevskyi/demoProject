@@ -1,25 +1,23 @@
-import {PageSkeleton} from "../components/PageSkeleton";
+import {Link} from "react-router-dom";
 
 export const Main = () => {
     return (
-        <PageSkeleton>
             <div className="bodyDiv font">
                 <div className="homeEntry">
-                    <a href="quote/random">Random quotes</a>
+                    <Link to="quote/random">Random quotes</Link>
                 </div>
 
                 <div className="homeEntry">
-                    <a href="quote/lang/en">Random quotes in english</a>
+                    <Link to="quote/lang/en">Random quotes in english</Link>
                 </div>
 
                 <div className="homeEntry">
-                    <a href="quote/lang/ru">Random quotes in russian</a>
+                    <Link to="quote/lang/ru">Random quotes in russian</Link>
                 </div>
 
                 <div className="homeEntry">
-                    <a href="about">About</a>
+                    <Link to="about">About</Link>
                 </div>
             </div>
-        </PageSkeleton>
     );
 }
