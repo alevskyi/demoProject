@@ -1,16 +1,21 @@
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 import {post} from "../client";
+import {useState} from "react";
 
 export const Login = (props: { loginHandler: () => void }) => {
     const {register, handleSubmit} = useForm();
+    const [error, setError] = useState<string>();
     const navigate = useNavigate()
 
     const onSubmit = (data: any) => {
-        post<any>('auth/login', data, (data) => {
-            props.loginHandler();
-            navigate('/');
-        });
+        post<any>('auth/login', data,
+            (data) => {
+                props.loginHandler();
+                navigate('/');
+            },
+            (data) => setError(data)
+        );
     }
 
     return (
@@ -32,12 +37,13 @@ export const Login = (props: { loginHandler: () => void }) => {
                             <td><input type="password" {...register("password")}/></td>
                         </tr>
 
+                        {error &&
                         <tr>
                             <td colSpan={2}>
-                                <div className="fieldError">This is error mesg</div>
+                                <div className="fieldError">{error}</div>
                             </td>
                         </tr>
-
+                        }
                         <tr>
                             <td colSpan={2}>
                                 <input type="submit" value="Submit"/>

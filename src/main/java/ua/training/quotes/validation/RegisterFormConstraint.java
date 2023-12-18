@@ -11,9 +11,9 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({TYPE_USE })
 @Retention(RUNTIME)
-@Constraint(validatedBy = PasswordConstraintValidator.class)
-public @interface PasswordConstraint {
-    String message() default "{ua.training.quotes.validation.PasswordConstraint.message}";
+@Constraint(validatedBy = RegisterFormConstraintValidator.class)
+public @interface RegisterFormConstraint {
+    String message() default "{ua.training.quotes.validation.RegisterFormConstraint.message}";
 
     Class<?>[] groups() default { };
 

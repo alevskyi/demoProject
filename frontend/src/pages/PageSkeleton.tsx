@@ -9,6 +9,7 @@ import {Profile} from "./Profile";
 import {About} from "./About";
 import {get} from "../client";
 import {AuthWrapper} from "../components/AuthWrapper";
+import {useAuth} from "../auth";
 
 export const PageSkeleton = () => {
     const [authenticated, setAuthenticated] = useState(false);
@@ -20,6 +21,8 @@ export const PageSkeleton = () => {
             setAuthenticated(false);
         });
     }, []);
+
+    // const [authenticated] = useAuth();
 
     return (
         <BrowserRouter>

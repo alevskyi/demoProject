@@ -10,7 +10,7 @@ export const get = <T>(relativePath: string, succeeded: (response: T) => void,
 export const post = <T>(relativePath: string, data: T, succeeded: (response: T) => void,
                        rejected: (code: any) => void = (res: any) => console.log('Rejected\n' + res)) => {
     axios.post(getAbsolutePath(relativePath), data)
-        .then(res => succeeded(res.data), res => rejected(res))
+        .then(res => succeeded(res.data), res => rejected(res.response.data))
         .catch(err => console.log(err));
 }
 

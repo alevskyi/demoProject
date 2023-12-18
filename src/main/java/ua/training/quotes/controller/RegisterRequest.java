@@ -2,11 +2,11 @@ package ua.training.quotes.controller;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import ua.training.quotes.validation.PasswordConstraint;
+import ua.training.quotes.validation.RegisterFormConstraint;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@PasswordConstraint
+@RegisterFormConstraint
 public class RegisterRequest extends LoginRequest {
     private String confirmPassword;
 }

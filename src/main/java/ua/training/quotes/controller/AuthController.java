@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.provisioning.UserDetailsManager;
@@ -31,23 +33,23 @@ public class AuthController {
     private final UserDetailsManager userDetailsManager;
 
     @GetMapping
-    public void checkIfLoggedIn() {
-
+    public String getCurrentUser() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 
     @PostMapping("login")
-    public void login(@RequestBody LoginRequest loginRequest, HttpServletRequest request, HttpServletResponse response) {
+    public String login(@RequestBody LoginRequest loginRequest, HttpServletRequest request, HttpServletResponse response) {
         Authentication authenticationRequest =
                 UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.getUsername(), loginRequest.getPassword());
         Authentication authenticationResponse =
                 this.authenticationManager.authenticate(authenticationRequest);
         securityContextRepository.saveContext(new SecurityContextImpl(authenticationResponse), request, response);
         rememberMeServices.loginSuccess(request, response, authenticationResponse);
+        return loginRequest.getUsername();
     }
 
     @PostMapping("register")
     public void register(@Valid @RequestBody RegisterRequest registerRequest) {
-
         userDetailsManager.createUser(new User(registerRequest.getUsername(), registerRequest.getPassword(), Collections.emptyList()));
     }
 }
