@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xq:xmlQuotes xmlns:xq="http://localhost:5000/webapp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:5000/webapp quotes_template.xsd ">
+<xq:xmlQuotes xmlns:xq="http://localhost:8080/quotes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/quotes http://localhost:8080/api/static/quotes_template.xsd">
   <xq:xmlQuote lang="English" person="personPlaceholder">QuotePlaceholder</xq:xmlQuote>
 </xq:xmlQuotes>

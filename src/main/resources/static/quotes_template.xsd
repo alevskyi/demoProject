@@ -1,7 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://localhost:5000/webapp" elementFormDefault="qualified" xmlns:xq="http://localhost:5000/webapp">
-
-    
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://localhost:8080/quotes" elementFormDefault="qualified" xmlns:xq="http://localhost:8080/quotes">
 
     <complexType name="xmlQuote">
     	<simpleContent>

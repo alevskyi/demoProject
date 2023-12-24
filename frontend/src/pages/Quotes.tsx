@@ -1,16 +1,15 @@
 import {Quote, QuoteList} from "../components/QuoteList";
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
-import {Path} from "@remix-run/router/history";
 
 import {get} from "../client";
 
 export const Quotes = () => {
-    const location: Path = useLocation();
-
+    const fetchUrl = useLocation()["pathname"];
     useEffect(() => {
-        get<Quote[]>(location.pathname, (data) => setQuotes(data))
-    }, []);
+        get<Quote[]>(fetchUrl, (data) => setQuotes(data))
+    }, [fetchUrl]);
+
     const [quotes, setQuotes] = useState<Quote[]>([]);
 
     return (
