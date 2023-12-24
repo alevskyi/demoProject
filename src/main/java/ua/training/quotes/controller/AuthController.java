@@ -7,8 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.provisioning.UserDetailsManager;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ua.training.quotes.security.SecurityUtil;
 
 import java.util.Collections;
 
@@ -34,18 +33,17 @@ public class AuthController {
 
     @GetMapping
     public String getCurrentUser() {
-        return SecurityContextHolder.getContext().getAuthentication().getName();
+        return SecurityUtil.getCurrentUserName();
     }
 
     @PostMapping("login")
-    public String login(@RequestBody LoginRequest loginRequest, HttpServletRequest request, HttpServletResponse response) {
+    public void login(@RequestBody LoginRequest loginRequest, HttpServletRequest request, HttpServletResponse response) {
         Authentication authenticationRequest =
                 UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.getUsername(), loginRequest.getPassword());
         Authentication authenticationResponse =
                 this.authenticationManager.authenticate(authenticationRequest);
         securityContextRepository.saveContext(new SecurityContextImpl(authenticationResponse), request, response);
         rememberMeServices.loginSuccess(request, response, authenticationResponse);
-        return loginRequest.getUsername();
     }
 
     @PostMapping("register")

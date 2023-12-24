@@ -35,6 +35,12 @@ li {
     margin-left: 100px;
 }
 
+textarea {
+   width:700px;
+    height:80px;
+    resize:none;
+}
+
 .container{
     overflow-y: hidden;
     width: 1030px;

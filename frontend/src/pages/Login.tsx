@@ -3,15 +3,15 @@ import {useNavigate} from "react-router-dom";
 import {post} from "../client";
 import {useState} from "react";
 
-export const Login = (props: { loginHandler: () => void }) => {
+export const Login = (props: { loginHandler: (username: string) => void}) => {
     const {register, handleSubmit} = useForm();
     const [error, setError] = useState<string>();
     const navigate = useNavigate()
 
-    const onSubmit = (data: any) => {
+    const onSubmit = (data) => {
         post<any>('auth/login', data,
-            (data) => {
-                props.loginHandler();
+            (res) => {
+                props.loginHandler(data.username);
                 navigate('/');
             },
             (data) => setError(data)

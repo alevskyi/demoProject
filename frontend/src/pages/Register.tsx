@@ -9,7 +9,7 @@ const allFields = ['username', 'password', 'confirmPassword'];
 
 export const Register = () => {
 
-    const {register, formState: {errors, touchedFields}, setError, handleSubmit} = useForm({mode: "onSubmit", reValidateMode: "onSubmit"});
+    const {register, formState: {errors}, setError, handleSubmit} = useForm({mode: "onSubmit", reValidateMode: "onSubmit"});
     const navigate = useNavigate();
     const validFields = useRef<string[]>([]);
 

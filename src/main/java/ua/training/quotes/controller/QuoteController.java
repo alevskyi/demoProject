@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ua.training.quotes.model.Lang;
 import ua.training.quotes.model.Quote;
 import ua.training.quotes.persistence.quote.QuoteResource;
+import ua.training.quotes.security.SecurityUtil;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -50,10 +52,9 @@ public class QuoteController {
     }
 
     @PostMapping
-    public void newQuote(@Valid Quote quote) {
-        String username = "testUser";
+    public void newQuote(@Valid @RequestBody Quote quote) {
         quoteResource.addQuote(quote.getText(), quote.getPerson(),
-                quote.getLang(), username);
+                quote.getLang(), SecurityUtil.getCurrentUserName());
     }
 
     @PostMapping("upload")

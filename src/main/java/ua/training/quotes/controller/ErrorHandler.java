@@ -24,4 +24,11 @@ public class ErrorHandler {
 	public ResponseEntity<String> loginError(AuthenticationException e) {
 		return ResponseEntity.badRequest().body("Incorrect username or password");
 	}
+
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<String> uncaughtException(Exception e) {
+		e.printStackTrace();
+		return ResponseEntity.badRequest().body("Unknown error, check logs");
+	}
+
 }

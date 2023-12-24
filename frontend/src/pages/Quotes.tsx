@@ -12,6 +12,7 @@ export const Quotes = () => {
         get<Quote[]>(location.pathname, (data) => setQuotes(data))
     }, []);
     const [quotes, setQuotes] = useState<Quote[]>([]);
+
     return (
             <div className="bodyDiv font">
                 <QuoteList data={quotes}/>

@@ -12,25 +12,15 @@ import ua.training.quotes.persistence.LangConverter;
 @Entity
 @Data
 public class Quote {
-
     @Id
     @GeneratedValue
     private Integer id;
-
-    @Pattern(regexp="[а-яА-Яa-zA-Z0-9 :;,\\.\\-\"'\\!\\?\\s]{10,}", message="QuoteList must be 10 and more characters long. Only letters(Latin and Cyrillic), digits, period, colon, semicolon, comma, "
-			+ "double quote, question mark, exclamation mark and dash allowed in quote text.")
-    private String text = "";
-
-
+    @Pattern(regexp="[а-яА-Яa-zA-Z0-9 :;,\\.\\-\"'\\!\\?\\s]{10,}", message="{ua.training.quotes.validation.Pattern.quote.text.notMatch.message}")
+    private String text;
     @Convert(converter=LangConverter.class)
-    @NotNull(message="Language is required.")
+    @NotNull(message="{ua.training.quotes.validation.NotNull.quote.lang.message}")
     private Lang lang;
-    
-    @Pattern(regexp="[а-яА-Яa-zA-Z 0-9\\-']{3,}", message="Person name must be 3 and more characters long. Only letters(Latin and Cyrillic), digits, "
-    			+ "dash and single quote allowed in person field.")
+    @Pattern(regexp="[а-яА-Яa-zA-Z 0-9\\-']{3,}", message="{ua.training.quotes.validation.Pattern.quote.person.notMatch.message}")
     private String person;
-    
-    @NotNull(message="User is required.")
     private String user;
-
 }
