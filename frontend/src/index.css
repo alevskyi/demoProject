@@ -7,6 +7,12 @@ body {
     background:url('./images/background.jpg');
 }
 
+/*.testFont {*/
+/*    font-family: "Carol Gothic W10 Regular";*/
+/*    font-style: normal;*/
+/*    font-weight: 400;*/
+/*}*/
+
 a:link {
     text-decoration: none;
     color: black;
@@ -27,12 +33,6 @@ a:hover {
 
 a:active {
     text-decoration: none;
-}
-
-li {
-    text-align: left;
-    padding: 0px;
-    margin-left: 100px;
 }
 
 textarea {
