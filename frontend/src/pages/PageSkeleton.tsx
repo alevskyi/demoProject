@@ -1,6 +1,6 @@
 import {Nav} from "../components/Nav";
-import React, {Suspense, useEffect, useState} from "react";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import {Main} from "./Main";
 import {Quotes} from "./Quotes";
 import {Login} from "./Login";
@@ -29,21 +29,14 @@ export const PageSkeleton = () => {
     }, []);
 
     if (loading) {
-        return (<div className="container">
-                <div className="header"/>
-                <div className="content"/>
-                <div className="footer"/>
-            </div>
-        );
+        return <></>;
     }
 
     return (
         <BrowserRouter>
-            <div className="container">
-                <div className="header">
-                    <Nav authenticated={isAuthenticated()} logoutHandler={handleLogout}/>
-                </div>
+            <div className="content-bg">
                 <div className="content">
+                    <Nav authenticated={isAuthenticated()} logoutHandler={handleLogout}/>
                     <Routes>
                         <Route path="/" element={<Main/>}/>
                         <Route path="quote/*" element={<Quotes/>}/>
@@ -55,9 +48,9 @@ export const PageSkeleton = () => {
                             </AuthWrapper>
                         }/>
                         <Route path="about" element={<About/>}/>
+                        <Route path="*" element={<Navigate replace to="/"/>}/>
                     </Routes>
                 </div>
-                <div className="footer"/>
             </div>
         </BrowserRouter>
     );

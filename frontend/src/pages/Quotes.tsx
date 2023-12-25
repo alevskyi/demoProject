@@ -13,8 +13,6 @@ export const Quotes = () => {
     const [quotes, setQuotes] = useState<Quote[]>([]);
 
     return (
-            <div className="bodyDiv font">
-                <QuoteList data={quotes}/>
-            </div>
+        <QuoteList data={quotes}/>
     );
 }

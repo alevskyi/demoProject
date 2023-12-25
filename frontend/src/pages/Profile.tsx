@@ -12,12 +12,10 @@ export const Profile = (props: { currentUser: string }) => {
     const fetchQuotes = () => get<Quote[]>(`quote/user/${props.currentUser}`, (data) => setQuotes(data));
 
     return (
-        <div className="bodyDiv font">
-            <span>Your postings:</span>
-            <div className="quotesList">
-                {quotes ? <QuoteList data={quotes}/> : <h4>Nothing here</h4>}
-            </div>
+        <>
+            <h3>Your postings:</h3>
+            {quotes ? <QuoteList data={quotes}/> : <h4>Nothing here</h4>}
             <QuoteForm successHandler={fetchQuotes}/>
-        </div>
+        </>
     );
 }

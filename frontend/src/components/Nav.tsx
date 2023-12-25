@@ -13,23 +13,19 @@ export function Nav(props: { authenticated: boolean, logoutHandler: () => void }
         });
     }
 
-    return <>
-        <div className="linkDiv left">
+    return (
+        <nav>
             {props.authenticated
                 ? <Link to="profile">Profile</Link>
                 : <Link to="register">Register</Link>
             }
-        </div>
 
-        <div className="linkDiv right">
+            <Link to="/">Main</Link>
+
             {props.authenticated
                 ? <a href="#" onClick={logout}>Logout</a>
                 : <Link to="login">Login</Link>
             }
-        </div>
-
-        <div className="linkDiv middle">
-            <Link to="/">Main</Link>
-        </div>
-    </>;
+        </nav>
+    );
 }

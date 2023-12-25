@@ -9,7 +9,10 @@ const allFields = ['username', 'password', 'confirmPassword'];
 
 export const Register = () => {
 
-    const {register, formState: {errors}, setError, handleSubmit} = useForm({mode: "onSubmit", reValidateMode: "onSubmit"});
+    const {register, formState: {errors}, setError, handleSubmit} = useForm({
+        mode: "onSubmit",
+        reValidateMode: "onSubmit"
+    });
     const navigate = useNavigate();
     const validFields = useRef<string[]>([]);
 
@@ -22,65 +25,53 @@ export const Register = () => {
         validFields.current = allFields.filter(f => !Object.getOwnPropertyNames(data).includes(f));
     };
 
-    const validIcon = <td><img src={check}/></td>;
-    const invalidIcon = <td><img src={cross}/></td>;
+    const validIcon = <img src={check}/>;
+    const invalidIcon = <img src={cross}/>;
 
     return (
-        <div className="bodyDiv font">
-            <div className="titleBlock">
-                <div className="emphasizedText">Registration</div>
-            </div>
-            <div>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <table className="table">
-                        <tbody>
-                        <tr>
-                            <td><span>Username:</span></td>
-                            <td><input type="text" {...register("username")}/></td>
-                        </tr>
-                        {errors.username &&
-                            <tr>
-                                <td colSpan={3}>
-                                    <div className="fieldError">{errors.username.message as string}</div>
-                                </td>
-                                {invalidIcon}
-                            </tr>}
-                        {validFields.current.includes('username') && validIcon}
+        <div className="col">
+            <h3 className="emphasizedText">Registration</h3>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <ul>
+                    <li>
+                        <span>Username:</span>
+                        <input type="text" {...register("username")}/>
+                    </li>
+                    {errors.username &&
+                        <li>
+                            <div className="error-msg">{errors.username.message as string}</div>
+                            {invalidIcon}
+                        </li>}
+                    {validFields.current.includes('username') && validIcon}
 
-                        <tr>
-                            <td><span>Password:</span></td>
-                            <td><input type="password" {...register("password")}/></td>
-                        </tr>
-                        {errors.password &&
-                            <tr>
-                                <td colSpan={3}>
-                                    <div className="fieldError">{errors.password.message as string}</div>
-                                </td>
-                                {invalidIcon}
-                            </tr>}
-                        {validFields.current.includes('password') && validIcon}
+                    <li>
+                        <span>Password:</span>
+                        <input type="password" {...register("password")}/>
+                    </li>
+                    {errors.password &&
+                        <li>
 
-                        <tr>
-                            <td><span>Confirm password:</span></td>
-                            <td><input type="password" {...register("confirmPassword")}/></td>
-                        </tr>
-                        {errors.confirmPassword &&
-                            <tr>
-                                <td colSpan={3}>
-                                    <div className="fieldError">{errors.confirmPassword.message as string}</div>
-                                </td>
-                                {invalidIcon}
-                            </tr>}
-                        {validFields.current.includes('confirmPassword') && validIcon}
-                        <tr>
-                            <td>
-                                <input type="submit" value="Submit"/>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </form>
-            </div>
+                            <div className="error-msg">{errors.password.message as string}</div>
+
+                            {invalidIcon}
+                        </li>}
+                    {validFields.current.includes('password') && validIcon}
+
+                    <li>
+                        <span>Confirm password:</span>
+                        <input type="password" {...register("confirmPassword")}/>
+                    </li>
+                    {errors.confirmPassword &&
+                        <li>
+                            <div className="error-msg">{errors.confirmPassword.message as string}</div>
+                            {invalidIcon}
+                        </li>}
+                    {validFields.current.includes('confirmPassword') && validIcon}
+                    <li>
+                        <input type="submit" value="Submit"/>
+                    </li>
+                </ul>
+            </form>
         </div>
     );
 }

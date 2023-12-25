@@ -1,8 +1,8 @@
 export const About = () => {
     return (
-
-        <div className="bodyDiv">
-            <h1>About resource:</h1>
+        <>
+            {/*margin pushes elements apart*/}
+            <p>About resource:</p>
 
             <p>This website represents a repository of quotations said by famous people.
                 Users can browse random quotes, or random quotes in specified language(​​Russian or English).
@@ -18,8 +18,6 @@ export const About = () => {
             <p>In addition, to allow users access quotes from scripts, there is an API which provides access to
                 single,
                 randomly picked quote in Russian or English, or random quote in specified language.
-                <span className="pseudolink">Links for queries through API.</span> Also, API provides
-                validation of registration form through Ajax.
             </p>
 
 
@@ -32,6 +30,6 @@ export const About = () => {
                 <li>Thymeleaf</li>
                 <li>JUnit, Mockito, AssertJ</li>
             </ul>
-        </div>
+        </>
     );
 }

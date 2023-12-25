@@ -6,8 +6,8 @@ import cross from "../images/cross.png";
 
 const allFields = ['text', 'person'];
 
-export function QuoteForm(props: {successHandler: () => void}) {
-    const {register, reset, formState: {errors, }, setError, handleSubmit} = useForm({
+export function QuoteForm(props: { successHandler: () => void }) {
+    const {register, reset, formState: {errors,}, setError, handleSubmit} = useForm({
         mode: "onSubmit",
         reValidateMode: "onSubmit"
     });
@@ -28,80 +28,65 @@ export function QuoteForm(props: {successHandler: () => void}) {
         validFields.current = allFields.filter(f => !Object.getOwnPropertyNames(data).includes(f));
     };
 
-    const validIcon = <td><img src={check}/></td>;
-    const invalidIcon = <td><img src={cross}/></td>;
+    const validIcon = <img src={check}/>;
+    const invalidIcon = <img src={cross}/>;
 
-    return <>
-        <span>Post a new quote:</span>
+    return (
+        <>
+        <p>Post a new quote:</p>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-            <table className="table">
-                <tbody>
-                <tr>
-                    <td><span>Text:</span></td>
-                    <td><textarea {...register("text")}></textarea></td>
-                </tr>
+            <ul>
+                <li>
+                    <span>Text:</span>
+                    <textarea {...register("text")}></textarea>
+                </li>
                 {errors.text &&
-                    <tr>
-                        <td>
-                            <div className="fieldError">{errors.text.message as string}</div>
-                        </td>
+                    <li>
+                        <div className="error-msg">{errors.text.message as string}</div>
                         {invalidIcon}
                         {validFields.current.includes('text') && validIcon}
-                    </tr>}
+                    </li>}
 
-                <tr>
-                    <td><span>Person:</span></td>
-                    <td><input {...register("person")}></input></td>
-                </tr>
+                <li>
+                    <span>Person:</span>
+                    <input {...register("person")}></input>
+                </li>
                 {errors.person &&
-                    <tr>
-                        <td>
-                            <div className="fieldError">{errors.person.message as string}</div>
-                        </td>
+                    <li>
+                        <div className="error-msg">{errors.person.message as string}</div>
                         {invalidIcon}
                         {validFields.current.includes('person') && validIcon}
-                    </tr>}
+                    </li>}
 
-                <tr>
-                    <td><span>Language:</span></td>
-                    <td>
-                        <input type="radio" {...register("lang")} value="EN" checked={true}/>English
-                        <input type="radio" {...register("lang")} value="RU"/>Russian
-                    </td>
-                </tr>
+                <li>
+                    <span>Language:</span>
+                    <input type="radio" {...register("lang")} value="EN" checked={true}/>English
+                    <input type="radio" {...register("lang")} value="RU"/>Russian
+                </li>
                 {errors.lang &&
-                    <tr>
-                        <td>
-                            <div className="fieldError">{errors.lang.message as string}</div>
-                        </td>
+                    <li>
+                        <div className="error-msg">{errors.lang.message as string}</div>
                         {invalidIcon}
                         {validFields.current.includes('lang') && validIcon}
-                    </tr>}
-
-                <tr>
-                    <td><input type="submit" value="Submit"/></td>
-                </tr>
-                </tbody>
-            </table>
+                    </li>}
+                <li>
+                    <input type="submit" value="Submit"/></li>
+            </ul>
         </form>
 
-        <span>or upload a file:</span>
+        <h4>or upload a file:</h4>
 
-        <form action="quotes/xml" encType="multipart/form-data" method="post">
-            <table className="table">
-                <tbody>
-                <tr>
-                    <td><span>File:</span></td>
-                    {/*style="font-family: cabazon; font-size: 1em;"*/}
-                    <td><input type="file" accept="application/xml" name="file"/></td>
-                    {/*style="font-family: cabazon; font-size: 1em;"*/}
-                    <td><input type="submit" value="Submit"/></td>
-                </tr>
-                </tbody>
-            </table>
-        </form>
-        {/*style="font-size: 1.3em;"*/}
-        <a href="/download/quote_template" target="_blank">Download template</a>
-    </>;
+        <ul>
+            <li>
+                <span>File:</span>
+                <input type="file" accept="application/xml" name="file"/>
+                <input type="submit" value="Submit"/>
+            </li>
+            <li>
+                <a href="/download/quote_template" target="_blank">Download template</a>
+            </li>
+        </ul>
+    </>
+    );
 }
