@@ -19,27 +19,29 @@ export const Login = (props: { loginHandler: (username: string) => void }) => {
     }
 
     return (
-        <div className="col">
-            <h3 className="emphasizedText">Login</h3>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <ul>
-                    <li>
-                        <span>Username:</span>
-                        <input type="text" {...register("username")}/>
-                    </li>
+        <ul className="center">
+            <li>
+                <h1>Login</h1>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <ul>
+                        <li>
+                            <span>Username</span>
+                            <input type="text" autoComplete="false" {...register("username")}/>
+                        </li>
 
-                    <li>
-                        <span>Password:</span>
-                        <input type="password" {...register("password")}/>
-                    </li>
-                    {error &&
-                        <p className="error-msg">{error}</p>
-                    }
-                    <li>
-                        <input type="submit" value="Submit"/>
-                    </li>
-                </ul>
-            </form>
-        </div>
+                        <li>
+                            <span>Password</span>
+                            <input type="password" {...register("password")}/>
+                        </li>
+                        {error &&
+                            <p className="error-msg">{error}</p>
+                        }
+                        <li>
+                           <h1><input type="submit" value="Submit"/></h1>
+                        </li>
+                    </ul>
+                </form>
+            </li>
+        </ul>
     );
 }

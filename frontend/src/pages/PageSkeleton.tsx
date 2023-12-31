@@ -39,7 +39,7 @@ export const PageSkeleton = () => {
                     <Nav authenticated={isAuthenticated()} logoutHandler={handleLogout}/>
                     <Routes>
                         <Route path="/" element={<Main/>}/>
-                        <Route path="quote/*" element={<Quotes/>}/>
+                        <Route path="quote/*" element={<div className="quotes quotesBig"><Quotes/></div>}/>
                         <Route path="login" element={<Login loginHandler={handleLogin}/>}/>
                         <Route path="register" element={<Register/>}/>
                         <Route path="profile" element={

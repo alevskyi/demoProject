@@ -12,5 +12,20 @@
     "text": "To be able to give away riches is mandatory if you wish to\n\t\tpossess them. This is the only way that you will be truly rich.",
     "person": "Mahummad Ali",
     "user": "testUser"
+  },
+
+  {
+    "id": 12,
+    "lang": "RU",
+    "text": "Победитель вызывает ненависть, побежденный повержен в скорбь.\n\t\tОтринувший и победу, и поражение живет в счастье и мире.",
+    "person": "Будда Гаутама",
+    "user": "testUser"
+  },
+  {
+    "id": 11,
+    "lang": "EN",
+    "text": "To be able to give away riches is mandatory if you wish to\n\t\tpossess them. This is the only way that you will be truly rich.",
+    "person": "Mahummad Ali",
+    "user": "testUser"
   }
 ]

@@ -29,49 +29,58 @@ export const Register = () => {
     const invalidIcon = <img src={cross}/>;
 
     return (
-        <div className="col">
-            <h3 className="emphasizedText">Registration</h3>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <ul>
-                    <li>
-                        <span>Username:</span>
-                        <input type="text" {...register("username")}/>
-                    </li>
-                    {errors.username &&
+        <div className="center">
+            <li>
+                <h1>Registration</h1>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <ul>
+                        <li className="dirtyCenter">
+                            <span>Username</span>
+                            <input type="text" {...register("username")}/>
+                            <>
+                                {errors.username && invalidIcon}
+                                {validFields.current.includes('username') && validIcon}
+                            </>
+                        </li>
+                        {errors.username &&
+                            <li>
+                                <p className="error-msg">{errors.username.message as string}</p>
+                            </li>
+                        }
+
+                        <li className="dirtyCenter">
+                            <span>Password</span>
+                            <input type="password" {...register("password")}/>
+                            <>
+                                {errors.password && invalidIcon}
+                                {validFields.current.includes('password') && validIcon}
+                            </>
+                        </li>
+                        {errors.password &&
+                            <li>
+                                <p className="error-msg">{errors.password.message as string}</p>
+                            </li>
+                        }
+
+                        <li className="dirtyCenter">
+                            <span>Confirm password</span>
+                            <input type="password" {...register("confirmPassword")}/>
+                            <>
+                                {errors.confirmPassword && invalidIcon}
+                                {validFields.current.includes('confirmPassword') && validIcon}
+                            </>
+                        </li>
+                        {errors.confirmPassword &&
+                            <li>
+                                <p className="error-msg">{errors.confirmPassword.message as string}</p>
+                            </li>
+                        }
                         <li>
-                            <div className="error-msg">{errors.username.message as string}</div>
-                            {invalidIcon}
-                        </li>}
-                    {validFields.current.includes('username') && validIcon}
-
-                    <li>
-                        <span>Password:</span>
-                        <input type="password" {...register("password")}/>
-                    </li>
-                    {errors.password &&
-                        <li>
-
-                            <div className="error-msg">{errors.password.message as string}</div>
-
-                            {invalidIcon}
-                        </li>}
-                    {validFields.current.includes('password') && validIcon}
-
-                    <li>
-                        <span>Confirm password:</span>
-                        <input type="password" {...register("confirmPassword")}/>
-                    </li>
-                    {errors.confirmPassword &&
-                        <li>
-                            <div className="error-msg">{errors.confirmPassword.message as string}</div>
-                            {invalidIcon}
-                        </li>}
-                    {validFields.current.includes('confirmPassword') && validIcon}
-                    <li>
-                        <input type="submit" value="Submit"/>
-                    </li>
-                </ul>
-            </form>
+                            <h1><input type="submit" value="Submit"/></h1>
+                        </li>
+                    </ul>
+                </form>
+            </li>
         </div>
     );
 }

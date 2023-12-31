@@ -30,6 +30,15 @@ export const About = () => {
                 <li>Thymeleaf</li>
                 <li>JUnit, Mockito, AssertJ</li>
             </ul>
+
+            <div className="testCont">
+                <h2>TEST</h2>
+                <input className="testInp"/>
+                <input className="btn" type="button" value="testBtn"/>
+
+                <input className="radio" name="tet" type="radio" value="EN" checked={true}/>English
+                <input className="radio" name="tet" type="radio" value="RU"/>Russian
+            </div>
         </>
     );
 }

@@ -11,12 +11,15 @@ export interface Quote {
 export function QuoteList(props: { data: Quote[] }) {
     return (
         <>
+        {/*// <div className="quotes">*/}
             {props.data.map((quote, index) =>
                 <Link key={index} to={`/quote/${quote.id}`}>
-                    <p className="quote">{quote.text}</p>
-                    <p className="person">-{quote.person}</p>
+
+                    <h1>{quote.text}</h1>
+                    <h3 className="person">-{quote.person}</h3>
                 </Link>
             )}
+        {/*// </div>*/}
         </>
     );
 }
