@@ -1,8 +1,8 @@
 package ua.training.quotes.controller;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,23 +13,23 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import ua.training.quotes.model.Lang;
 import ua.training.quotes.model.Quote;
-import ua.training.quotes.persistence.quote.QuoteResource;
-import ua.training.quotes.security.SecurityUtil;
+import ua.training.quotes.persistence.InMemoryQuoteResource;
+import ua.training.quotes.service.XmlQuoteParserService;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Set;
 
 @RestController
 @RequestMapping("quote")
 @RequiredArgsConstructor
 public class QuoteController {
-    private final QuoteResource quoteResource;
+    private final InMemoryQuoteResource quoteResource;
+    private final XmlQuoteParserService parserService;
 
     @Value("${quotes.random.amount}")
     private int randomAmount;
-    @Value("${quotes.lang.amount}")
-    private int langAmount;
 
     @GetMapping("random")
     public Set<Quote> random() {
@@ -52,15 +52,22 @@ public class QuoteController {
     }
 
     @PostMapping
-    public void newQuote(@Valid @RequestBody Quote quote) {
-        quoteResource.addQuote(quote.getText(), quote.getPerson(),
-                quote.getLang(), SecurityUtil.getCurrentUserName());
+    public void newQuote(@RequestBody Quote quote) {
+        quoteResource.addQuote(quote);
     }
 
     @PostMapping("upload")
     public void upload(@RequestPart MultipartFile file) {
-        String username = "testUser";
-        Set<Quote> quotes = new HashSet<>();
-        quoteResource.addQuotes(quotes, username);
+        Set<Quote> quotes = parserService.parse(file);
+        quoteResource.addQuotes(quotes);
+    }
+
+    @GetMapping(value = "template.xml", produces = "application/octet-stream")
+    public byte[] getTemplate() {
+        try(InputStream is = new ClassPathResource("quotes_template.xml").getInputStream()) {
+            return is.readAllBytes();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

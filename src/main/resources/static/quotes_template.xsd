@@ -4,42 +4,40 @@
     <complexType name="xmlQuote">
     	<simpleContent>
     		<extension base="string">
-    			<attribute name="lang" type="xq:Lang" use="required"></attribute>
-    			<attribute name="person" type="xq:QuotePerson"
-    				use="required">
-    			</attribute>
+				<attribute name="lang" type="xq:Lang" use="required"/>
+    			<attribute name="person" type="xq:QuotePerson" use="required"/>
+    			<attribute name="text" type="xq:QuoteText" use="required"/>
     		</extension>
     	</simpleContent>
     </complexType>
 
     <simpleType name="Lang">
     	<restriction base="string">
-    		<enumeration value="English"></enumeration>
-    		<enumeration value="Russian"></enumeration>
+			<enumeration value="EN"/>
+			<enumeration value="RU"/>
     	</restriction>
     </simpleType>
 
 
     <simpleType name="QuoteText">
     	<restriction base="string">
-    		<minLength value="5"></minLength>
+			<minLength value="10"/>
     	</restriction>
     </simpleType>
 
-    <element name="xmlQuote" type="xq:xmlQuote"></element>
+	<element name="xmlQuote" type="xq:xmlQuote"/>
 
-    <element name="xmlQuotes" type="xq:xmlQuotes"></element>
+	<element name="xmlQuotes" type="xq:xmlQuotes"/>
     
     <complexType name="xmlQuotes">
     	<sequence>
-    		<element ref="xq:xmlQuote" maxOccurs="unbounded" minOccurs="1"></element>
+			<element ref="xq:xmlQuote" maxOccurs="unbounded" minOccurs="1"/>
     	</sequence>
     </complexType>
 
     <simpleType name="QuotePerson">
     	<restriction base="string">
-    		<minLength value="5"></minLength>
-    		<whiteSpace value="collapse"></whiteSpace>
+			<minLength value="3"/>
     	</restriction>
     </simpleType>
 

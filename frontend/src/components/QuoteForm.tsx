@@ -1,6 +1,6 @@
 import {useForm} from "react-hook-form";
 import {useRef} from "react";
-import {post} from "../client";
+import {get, post} from "../client";
 import check from "../images/check.png";
 import cross from "../images/cross.png";
 
@@ -21,6 +21,14 @@ export function QuoteForm(props: { successHandler: () => void }) {
             },
             (data) => parseErrors(data)
         );
+    }
+
+    const download = (e) => {
+        // e => e.stopPropagation()
+        get('quote/template.xml', (data) => {
+            console.log(data);
+        });
+        e.preventDefault();
     }
 
     const parseErrors = (data) => {
@@ -86,7 +94,7 @@ export function QuoteForm(props: { successHandler: () => void }) {
                     <input type="submit" value="Submit"/>
                 </li>
                 <li>
-                    <a href="/download/quote_template" target="_blank">Download template</a>
+                    <a href="download/template.xml" download="template.xml"><h3>Download template</h3></a>
                 </li>
             </div>
         </>

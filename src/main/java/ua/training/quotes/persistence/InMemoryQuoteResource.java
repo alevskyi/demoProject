@@ -1,12 +1,15 @@
-package ua.training.quotes.persistence.quote;
+package ua.training.quotes.persistence;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.validation.annotation.Validated;
 import ua.training.quotes.model.Lang;
 import ua.training.quotes.model.Quote;
+import ua.training.quotes.security.SecurityUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,9 +20,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@Validated
 @Repository
 @RequiredArgsConstructor
-public class XmlQuoteResource implements QuoteResource {
+public class InMemoryQuoteResource implements QuoteResource {
 
     private final ObjectMapper objectMapper;
     private Set<Quote> quotes;
@@ -35,7 +39,7 @@ public class XmlQuoteResource implements QuoteResource {
     }
 
     @Override
-    public Set<Quote> getRandomQuotes(int amount) {
+    public Set<Quote> getRandomQuotes(Integer amount) {
         List<Quote> list = new ArrayList<>(quotes);
         Collections.shuffle(list);
         return list.stream().limit(amount).collect(Collectors.toSet());
@@ -57,19 +61,6 @@ public class XmlQuoteResource implements QuoteResource {
     }
 
     @Override
-    public void addQuote(String text, String person, Lang lang, String username) {
-        int maxId = quotes.stream().map(Quote::getId).flatMapToInt(id -> IntStream.of(id)).max().orElse(0);
-        Quote quote = new Quote();
-        quote.setId(maxId + 1);
-        quote.setText(text);
-        quote.setPerson(person);
-        quote.setLang(lang);
-        quote.setUser(username);
-
-        quotes.add(quote);
-    }
-
-    @Override
     public Set<Quote> getUserQuotes(String username) {
         return quotes.stream()
                 .filter(q -> q.getUser().equals(username))
@@ -77,9 +68,19 @@ public class XmlQuoteResource implements QuoteResource {
     }
 
     @Override
-    public void addQuotes(Set<Quote> quotes, String username) {
-//TODO username included in quote
-        this.quotes.addAll(quotes);
+    public void addQuote(@Valid Quote quote) {
+        addIdAndUserName(quote);
+        quotes.add(quote);
     }
 
+    @Override
+    public void addQuotes(@Valid Set<Quote> quotes) {
+        this.quotes.forEach(this::addQuote);
+    }
+
+    private void addIdAndUserName(Quote q) {
+        int maxId = quotes.stream().map(Quote::getId).flatMapToInt(id -> IntStream.of(id)).max().orElse(0);
+        q.setId(maxId + 1);
+        q.setUser(SecurityUtil.getCurrentUserName());
+    }
 }
