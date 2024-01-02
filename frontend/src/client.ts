@@ -14,10 +14,6 @@ export const post = <T>(relativePath: string, data: T, succeeded: (response: T) 
         .catch(err => console.log(err));
 }
 
-// export const download = (relativePath: string) => {
-//     browser.downloads.download({url: getAbsolutePath(relativePath)});
-// }
-
 const getAbsolutePath = (relativePath: string): string => {
     const sanitizedPath = relativePath.startsWith('/') ? relativePath : '/' + relativePath;
     const path =  `${process.env.REACT_APP_BACKEND_URL}${sanitizedPath}`

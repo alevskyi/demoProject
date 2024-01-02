@@ -14,7 +14,7 @@
     <simpleType name="Lang">
     	<restriction base="string">
 			<enumeration value="EN"/>
-			<enumeration value="RU"/>
+			<enumeration value="UA"/>
     	</restriction>
     </simpleType>
 

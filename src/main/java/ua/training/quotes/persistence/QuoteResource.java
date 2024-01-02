@@ -1,5 +1,6 @@
 package ua.training.quotes.persistence;
 
+import jakarta.validation.Valid;
 import ua.training.quotes.model.Lang;
 import ua.training.quotes.model.Quote;
 
@@ -15,8 +16,8 @@ public interface QuoteResource {
 
     Set<Quote> getUserQuotes(String username);
 
-    void addQuote(Quote quote);
+    void addQuote(@Valid Quote quote);
 
-    void addQuotes(Set<Quote> quotes);
+    void addQuotes(@Valid Set<Quote> quotes);
 
 }

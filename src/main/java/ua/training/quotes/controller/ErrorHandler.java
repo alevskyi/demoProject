@@ -1,8 +1,9 @@
 package ua.training.quotes.controller;
 
+import jakarta.validation.ConstraintViolationException;
+import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -12,11 +13,11 @@ import java.util.Map;
 @ControllerAdvice
 public class ErrorHandler {
 
-	@ExceptionHandler(BindException.class)
-	public ResponseEntity<Map<String, String>> validationErrors(BindException e) {
+	@ExceptionHandler(ConstraintViolationException.class)
+	public ResponseEntity<Map<String, String>> validation(ConstraintViolationException e) {
 		Map<String, String> errors = new HashMap<>();
 		//One error per field
-		e.getFieldErrors().forEach(err -> errors.put(err.getField(), err.getDefaultMessage()));
+		e.getConstraintViolations().forEach(err -> errors.put(((PathImpl) err.getPropertyPath()).getLeafNode().getName(), err.getMessage()));
 		return ResponseEntity.badRequest().body(errors);
 	}
 

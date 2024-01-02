@@ -6,10 +6,17 @@ import cross from "../images/cross.png";
 
 const allFields = ['text', 'person'];
 
+interface FormValues {
+    text: string,
+    person: string,
+    lang: 'EN' | 'UA'
+}
+
 export function QuoteForm(props: { successHandler: () => void }) {
-    const {register, reset, formState: {errors,}, setError, handleSubmit} = useForm({
+    const {register, reset, formState: {errors,}, setError, handleSubmit} = useForm<FormValues>({
         mode: "onSubmit",
-        reValidateMode: "onSubmit"
+        reValidateMode: "onSubmit",
+        defaultValues: {lang: 'UA'},
     });
     const validFields = useRef<string[]>([]);
 
@@ -32,6 +39,7 @@ export function QuoteForm(props: { successHandler: () => void }) {
     }
 
     const parseErrors = (data) => {
+        // @ts-ignore
         Object.getOwnPropertyNames(data).forEach(p => setError(p, {type: 'manual', message: data[p]}));
         validFields.current = allFields.filter(f => !Object.getOwnPropertyNames(data).includes(f));
     };
@@ -75,8 +83,8 @@ export function QuoteForm(props: { successHandler: () => void }) {
 
                     <li className="dirtyCenter">
                         <span>Language</span>
-                        <input type="radio" {...register("lang")} value="EN" checked={true}/><span>English</span>
-                        <input type="radio" {...register("lang")} value="RU"/><span>Russian</span>
+                        <input type="radio" {...register("lang")} value="EN"/><span>English</span>
+                        <input type="radio" {...register("lang")} value="UA"/><span>Ukrainian</span>
                     </li>
 
                     <li>

@@ -68,13 +68,13 @@ public class InMemoryQuoteResource implements QuoteResource {
     }
 
     @Override
-    public void addQuote(@Valid Quote quote) {
+    public void addQuote(Quote quote) {
         addIdAndUserName(quote);
         quotes.add(quote);
     }
 
     @Override
-    public void addQuotes(@Valid Set<Quote> quotes) {
+    public void addQuotes(Set<Quote> quotes) {
         this.quotes.forEach(this::addQuote);
     }
 

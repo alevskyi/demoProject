@@ -15,12 +15,12 @@ public class Quote {
     @Id
     @GeneratedValue
     private Integer id;
-    @Pattern(regexp="[а-яА-Яa-zA-Z0-9 :;,\\.\\-\"'\\!\\?\\s]{10,}", message="{ua.training.quotes.validation.Pattern.quote.text.notMatch.message}")
+    @Pattern(regexp="[а-яіїєА-ЯІЇЄa-zA-Z0-9 :;,\\.\\-\"'\\!\\?\\s]{10,}", message="{ua.training.quotes.validation.Pattern.quote.text.notMatch.message}")
     private String text;
     @Enumerated(EnumType.STRING)
     @NotNull(message="{ua.training.quotes.validation.NotNull.quote.lang.message}")
     private Lang lang;
-    @Pattern(regexp="[а-яА-Яa-zA-Z 0-9\\-']{3,}", message="{ua.training.quotes.validation.Pattern.quote.person.notMatch.message}")
+    @Pattern(regexp="[а-яіїєА-ЯІЇЄa-zA-Z 0-9\\-']{3,}", message="{ua.training.quotes.validation.Pattern.quote.person.notMatch.message}")
     private String person;
     private String user;
 }

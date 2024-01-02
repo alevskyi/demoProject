@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xq:xmlQuotes xmlns:xq="http://localhost:8080/quotes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/quotes http://localhost:8080/api/static/quotes_template.xsd">
-  <xq:xmlQuote lang="RU" person="Эскобар" text="Шо то хуйня, шо это хуйня"/>
+  <xq:xmlQuote lang="EN" person="sample name" text="sample text"/>
+  <xq:xmlQuote lang="UA" person="sample name" text="sample text"/>
 </xq:xmlQuotes>

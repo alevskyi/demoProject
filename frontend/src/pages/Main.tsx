@@ -10,7 +10,7 @@ export const Main = () => {
                 <h1><Link to="quote/lang/en">Random quotes in english</Link></h1>
             </li>
             <li>
-                <h1><Link to="quote/lang/ru">Random quotes in russian</Link></h1>
+                <h1><Link to="quote/lang/ua">Random quotes in ukrainian</Link></h1>
             </li>
             <li>
                 <h1><Link to="about">About</Link></h1>
