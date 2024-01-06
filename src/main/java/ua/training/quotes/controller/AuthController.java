@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.provisioning.UserDetailsManager;
@@ -48,6 +49,6 @@ public class AuthController {
 
     @PostMapping("register")
     public void register(@Valid @RequestBody RegisterRequest registerRequest) {
-        userDetailsManager.createUser(new User(registerRequest.getUsername(), registerRequest.getPassword(), Collections.emptyList()));
+        userDetailsManager.createUser(new User(registerRequest.getUsername(), registerRequest.getPassword(), Collections.singletonList(new SimpleGrantedAuthority("dummyValue"))));
     }
 }

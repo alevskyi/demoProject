@@ -10,7 +10,7 @@ public interface QuoteResource {
 
     Set<Quote> getRandomQuotes(Integer amount);
 
-    Quote getQuoteById(int id);
+    Quote getQuoteById(Integer id);
 
     Set<Quote> getQuotesInLang(Lang lang);
 

@@ -3,9 +3,7 @@ package ua.training.quotes.persistence;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 import org.springframework.validation.annotation.Validated;
 import ua.training.quotes.model.Lang;
 import ua.training.quotes.model.Quote;
@@ -21,7 +19,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Validated
-@Repository
 @RequiredArgsConstructor
 public class InMemoryQuoteResource implements QuoteResource {
 
@@ -31,7 +28,7 @@ public class InMemoryQuoteResource implements QuoteResource {
     @PostConstruct
     public void init() {
         try {
-            this.quotes = objectMapper.readValue(this.getClass().getClassLoader().getResourceAsStream("quote.json"), new TypeReference<HashSet<Quote>>() {
+            this.quotes = objectMapper.readValue(this.getClass().getClassLoader().getResourceAsStream("data.json"), new TypeReference<HashSet<Quote>>() {
             });
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -46,7 +43,7 @@ public class InMemoryQuoteResource implements QuoteResource {
     }
 
     @Override
-    public Quote getQuoteById(int id) {
+    public Quote getQuoteById(Integer id) {
         return quotes.stream()
                 .filter(q -> q.getId().equals(id))
                 .findAny()

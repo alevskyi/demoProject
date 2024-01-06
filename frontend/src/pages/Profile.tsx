@@ -14,8 +14,8 @@ export const Profile = (props: { currentUser: string }) => {
     return (
         <>
             <h2>Your postings:</h2>
-            {quotes ?
-               <div className="quotes"> <QuoteList data={quotes}/> </div>: <h4>Nothing here</h4>}
+            {quotes.length ?
+               <div className="quotes"> <QuoteList data={quotes}/></div>: <h1>Nothing here</h1>}
             <QuoteForm successHandler={fetchQuotes}/>
         </>
     );

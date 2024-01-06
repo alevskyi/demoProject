@@ -1,6 +1,6 @@
 import {useForm} from "react-hook-form";
-import {useRef} from "react";
-import {get, post} from "../client";
+import {ChangeEvent, useRef, useState} from "react";
+import {post} from "../client";
 import check from "../images/check.png";
 import cross from "../images/cross.png";
 
@@ -16,9 +16,25 @@ export function QuoteForm(props: { successHandler: () => void }) {
     const {register, reset, formState: {errors,}, setError, handleSubmit} = useForm<FormValues>({
         mode: "onSubmit",
         reValidateMode: "onSubmit",
-        defaultValues: {lang: 'UA'},
+        defaultValues: {lang: 'EN'},
     });
     const validFields = useRef<string[]>([]);
+    const [file, setFile] = useState<File>();
+
+    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setFile(e.target.files[0]);
+        }
+    };
+
+   const uploadFile = () => {
+       if (!file) {
+           return;
+       }
+       const form = new FormData();
+       form.append('file', file);
+       post('quote/upload', form, () => {props.successHandler()});
+   }
 
     const onSubmit = (data) => {
         post<any>('quote', data,
@@ -28,14 +44,6 @@ export function QuoteForm(props: { successHandler: () => void }) {
             },
             (data) => parseErrors(data)
         );
-    }
-
-    const download = (e) => {
-        // e => e.stopPropagation()
-        get('quote/template.xml', (data) => {
-            console.log(data);
-        });
-        e.preventDefault();
     }
 
     const parseErrors = (data) => {
@@ -98,11 +106,11 @@ export function QuoteForm(props: { successHandler: () => void }) {
             <div>
                 <li>
                     <span>File</span>
-                    <input type="file" accept="application/xml" name="file"/>
-                    <input type="submit" value="Submit"/>
+                    <input type="file" accept="application/xml" name="file" onChange={handleFileChange}/>
+                    <input type="submit" value="Submit" onClick={uploadFile}/>
                 </li>
                 <li>
-                    <a href="download/template.xml" download="template.xml"><h3>Download template</h3></a>
+                    <a href="quotes_template.xml" download="template.xml"><h3>Download template</h3></a>
                 </li>
             </div>
         </>

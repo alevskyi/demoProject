@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import ua.training.quotes.model.Lang;
 import ua.training.quotes.model.Quote;
-import ua.training.quotes.persistence.InMemoryQuoteResource;
+import ua.training.quotes.persistence.QuoteResource;
 import ua.training.quotes.service.XmlQuoteParserService;
 
 import java.io.IOException;
@@ -25,7 +25,7 @@ import java.util.Set;
 @RequestMapping("quote")
 @RequiredArgsConstructor
 public class QuoteController {
-    private final InMemoryQuoteResource quoteResource;
+    private final QuoteResource quoteResource;
     private final XmlQuoteParserService parserService;
 
     @Value("${quotes.random.amount}")

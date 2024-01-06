@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -13,7 +14,7 @@ import lombok.Data;
 @Data
 public class Quote {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Pattern(regexp="[а-яіїєА-ЯІЇЄa-zA-Z0-9 :;,\\.\\-\"'\\!\\?\\s]{10,}", message="{ua.training.quotes.validation.Pattern.quote.text.notMatch.message}")
     private String text;

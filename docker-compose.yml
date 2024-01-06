@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  mysql:
+    image: 'bitnami/mysql:8.2.0'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=quotes
+    ports:
+      - '3306:3306'
