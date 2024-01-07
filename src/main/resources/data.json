@@ -1,0 +1,50 @@
+[
+  {
+    "_class": "ua.training.quotes.model.Quote",
+    "id": 1,
+    "lang": "UA",
+    "text": "Варто тільки повірити, що ви можете - і ви вже на півдороги до цілі.",
+    "person": "Теодор Рузвельт",
+    "user": "testUser"
+  },
+  {
+    "_class": "ua.training.quotes.model.Quote",
+    "id": 2,
+    "lang": "UA",
+    "text": "Неосмислене життя не варте того, щоб його прожити.",
+    "person": "Сократ",
+    "user": "testUser"
+  },
+  {
+    "_class": "ua.training.quotes.model.Quote",
+    "id": 3,
+    "lang": "UA",
+    "text": "Ми знаємо, хто ми є, але не знаємо, ким ми можемо бути.",
+    "person": "Вільям Шекспір",
+    "user": "testUser"
+  },
+  {
+    "_class": "ua.training.quotes.model.Quote",
+    "id": 4,
+    "lang": "EN",
+    "text": "To be able to give away riches is mandatory if you wish to possess them. This is the only way that you will be truly rich.",
+    "person": "Muhammad Ali",
+    "user": "testUser"
+  },
+  {
+    "_class": "ua.training.quotes.model.Quote",
+    "id": 5,
+    "lang": "EN",
+    "text": "Twenty years from now you will be more disappointed by the things that you did not do than by the ones you did do.",
+    "person": "Mark Twain",
+    "user": "testUser"
+  },
+  {
+    "_class": "ua.training.quotes.model.Quote",
+    "id": 6,
+    "lang": "EN",
+    "text": "Knowing yourself is the beginning of all wisdom.",
+    "person": "Aristotle",
+    "user": "testUser"
+  }
+]

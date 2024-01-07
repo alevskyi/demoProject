@@ -1,30 +1,34 @@
-### Summary:
-This is a website written in Java. Its purpose is to provide access to priviously posted
-quotations to users, and allow them to post new. User can post new quote after registration
-and signing in either, by filling a form or uploading an XML file.
-Also there is simple REST API for form validation and quote queries.
+## Preface: 
+This is an updated version of my first Java project. Changes include: dependencies version updates, UI changes, and minor internal changes.
+Original functionality preserved as it was. Full list of changes bellow.
+ - Spring Boot version update: `1.5.2` &rarr; `3.2.0`  
+ - Build tool change: `Gradle` &rarr; `Maven`
+ - Generated sources from an XSD schema: `Part of the codebase` &rarr; `Generated during build, using JAXB plugin`
+ - Database change: `H2 database file, part of the codebase` &rarr; `MySQL in Docker`
+ - Frontend update: `jQuery` &rarr; `React`
+ - Backend view layer: `Thymeleaf templates`  &rarr; `REST API`
 
-### Persistence options:
-Application can store data in three different ways, using either: Spring JDBC templates, Hibernate or JAXB.
-Repository includes database file ```database.mv.db``` and XML files preloaded with same content - quotations and two user accounts. 
-To choose specific option set profiles in /src/main/resources/application.properties as follows:
-* ```ormQuotes,ormUsers```  -  for Hibernate
-* ```jdbcQuotes,jdbcUsers```  -  for Spring JDBC templates
-* ```xmlQuotes,xmlUsers```  -  to load data from XML files in ```/src/main/resources```
+## Summary:
+This is a website written in Java. It allows users to browse quotes, and post new.
+User can post a new quote after register and login process via, filling a form, or uploading an XML file.
+Individual quotes contain a unique link, and can be bookmarked.
 
-### Screenshots:
-![main](https://cloud.githubusercontent.com/assets/27825950/25377720/fb4f7324-29b0-11e7-957b-cb612596fcbb.jpg)
-![quotes](https://cloud.githubusercontent.com/assets/27825950/25377746/0bd31eb2-29b1-11e7-8870-7b33dde47c28.jpg)
-![profile](https://cloud.githubusercontent.com/assets/27825950/25377765/1a003a2e-29b1-11e7-88de-bc0dcdd3e946.jpg)
-![registration](https://cloud.githubusercontent.com/assets/27825950/25377781/277418f6-29b1-11e7-952c-2752e05543da.jpg)
+## Screenshots:
+![register](./screenshots/register.png)
+![main](./screenshots/main.png)
+![profile](./screenshots/profile.png)
+![quotes](./screenshots/quotes.png)
 
-### How to run:
-Execute a shell command in project root ```gradlew bootRun```, this will start server on ```localhost:8000```.	
+## How to run:
+To start frontend, run shell commands: 
+```shell
+cd frontend
+npm run start
+```
+To start backend, run main class `ua.training.quotes.Application`
 
-### Used technologies:
-* Spring 4
-* Spring Boot
-* Spring Security
-* Spring JDBC templates, JAXB, Hibernate
-* Thymeleaf
-* JUnit, Mockito, AssertJ
+The application can store data in two different ways: in memory, or in a database. The default option is "in memory".
+To use a database: comment out profile setting in `application.properties` and run `docker-compose up` to start a database.
+Sample quotes stored in a file `data.json`. Sample user credentials: login - `testUser`, password - `1234`.
+
+
